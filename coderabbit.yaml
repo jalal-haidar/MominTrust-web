@@ -1,0 +1,111 @@
+# Configuration for AI code review and context
+# This helps AI assistants understand project preferences
+
+reviews:
+  # Enable auto-review for common patterns
+  auto_review:
+    enabled: true
+
+  # Custom rules for this project
+  rules:
+    # TypeScript specific rules
+    - 'Prefer interface over type for object definitions'
+    - 'Use proper TypeScript strict mode patterns'
+    - 'Avoid any type - use proper typing'
+
+    # React patterns
+    - 'Use functional components with proper TypeScript interfaces'
+    - 'Prefer React.FC or explicit function component typing'
+    - 'Use proper state management with Recoil patterns'
+
+    # MUI/Styling patterns
+    - 'Use MUI sx prop for simple styles, styled components for complex ones'
+    - 'Follow established theme patterns'
+    - 'Use proper responsive design patterns'
+
+    # File organization
+    - 'Follow the established barrel export pattern (index.ts files)'
+    - 'Keep component files organized with proper separation'
+    - 'Use proper folder structure for components, pages, and sections'
+
+    # Testing
+    - 'Include proper unit tests for components'
+    - 'Use Testing Library best practices'
+    - 'Write E2E tests for critical user flows'
+
+  # Files to pay special attention to
+  focus_files:
+    - 'src/**/*.tsx'
+    - 'src/**/*.ts'
+    - '*.config.ts'
+    - 'package.json'
+    - 'tsconfig.json'
+
+  # Patterns to ignore in reviews
+  ignore_patterns:
+    - 'dist/**'
+    - 'node_modules/**'
+    - 'coverage/**'
+    - 'build/**'
+    - '*.log'
+
+# Knowledge base for the project
+knowledge_base:
+  # Key architectural decisions
+  tech_stack:
+    frontend: 'React 18 + TypeScript + Vite'
+    ui_framework: 'Material-UI v5'
+    state_management: 'Recoil'
+    routing: 'React Router v6'
+    styling: 'Emotion (CSS-in-JS)'
+    testing: 'Vitest + Playwright'
+
+  # Important patterns to maintain
+  patterns:
+    - 'Component-first architecture'
+    - 'Atomic design principles for reusable components'
+    - 'Error boundary implementation'
+    - 'PWA capabilities'
+    - 'Responsive design first'
+    - 'AI-powered features for enhanced user experience'
+
+  # AI Integration Opportunities
+  ai_features:
+    donor_engagement:
+      - 'AI-powered donation amount suggestions based on donor history'
+      - 'Intelligent donor segmentation for targeted campaigns'
+      - 'Automated thank you message personalization'
+      - 'Predictive analytics for optimal donation timing'
+
+    beneficiary_management:
+      - 'AI-assisted beneficiary screening and eligibility assessment'
+      - 'Academic performance prediction and early intervention alerts'
+      - 'Automated progress report generation'
+      - 'Smart matching between donors and beneficiaries'
+
+    content_generation:
+      - 'AI-generated success stories with privacy protection'
+      - 'Automated impact report creation'
+      - 'Multi-language content translation for community outreach'
+      - 'Social media content optimization'
+
+    operational_efficiency:
+      - 'Chatbot for donor inquiries and application support'
+      - 'Intelligent document processing for applications'
+      - 'Fraud detection in donation patterns'
+      - 'Resource allocation optimization'
+
+    impact_analysis:
+      - 'Predictive modeling for educational outcomes'
+      - 'AI-driven insights from beneficiary data'
+      - 'Automated KPI tracking and trend analysis'
+      - 'Risk assessment for beneficiary dropout prevention'
+
+  # Common gotchas to avoid
+  anti_patterns:
+    - 'Avoid direct DOM manipulation'
+    - "Don't bypass the theme system"
+    - 'Avoid prop drilling - use Recoil for global state'
+    - "Don't forget error boundaries for new routes"
+    - 'Never compromise beneficiary privacy for AI features'
+    - 'Always maintain human oversight for AI-driven decisions'

@@ -1,9 +1,21 @@
-
-
 # MominTrust PWA
 
+**Empowering Education Through Technology**
 
-Almost all projects need to have a router, a UI framework, store integration, theming, error handling, base file/folder structure, a builder, some developer tools (eslint, prettier, etc), tests and many more. In this starter kit, we tried to put together the best options available from the above-mentioned fields. Out of the box, it provides a modern production-ready setup created by developers for developers 💚
+This Progressive Web Application serves **Momin Trust**, a dedicated non-profit organization that identifies and supports talented but financially disadvantaged children who excel academically in government schools. Our mission is to break the cycle of poverty through education by providing systematic financial assistance and creating pathways for brilliant minds to achieve their full potential.
+
+## Organization Mission
+
+Momin Trust follows a systematic approach to:
+
+- 🎯 **Identify** brilliant children with outstanding academic performance in government schools
+- 💰 **Raise funds** from compassionate donors and supporters in the community
+- 🎓 **Provide comprehensive** educational financial support for tuition, books, and supplies
+- 📊 **Track impact** through transparent reporting and success metrics
+- 🌟 **Showcase success stories** of transformed lives through education
+- 🚀 **Maximize online presence** to reach more supporters and beneficiaries
+
+This application serves as both a website and mobile app, built with modern web technologies to ensure accessibility across all devices and internet conditions, reaching every corner of our community.
 
 ### Tech stack
 
@@ -42,8 +54,6 @@ Almost all projects need to have a router, a UI framework, store integration, th
 - ✅ [Husky](#husky)
 - ✅ [Lint staged](#lint-staged)
 - ✅ [https localhost](#https-localhost)
-
-
 
 #### Theme
 
@@ -297,3 +307,18 @@ There are other scripts as well:
 - `preview` - boot up local static web server that serves the files from `dist` folder. It's an easy way to check if the production build looks OK in your local environment.
 - `https-preview` - is the same as `preview`, but with HTTPS. It's handy for testing your PWA capabilities in your local environment.
 - `prepare` - install `husky` and copy the default `env/.shared` file to `.env` file. This script is being run automatically after `npm install` or `yarn`.
+
+## GitHub Copilot Context
+
+This project includes comprehensive Copilot context in the `.copilot/` directory to help AI assistants understand the project structure, coding standards, and **domain-specific context for Momin Trust**. The context includes:
+
+- **Project Context** (`.copilot/project-context.md`) - Overview of Momin Trust's mission, tech stack, architecture patterns, and development guidelines
+- **Coding Standards** (`.copilot/coding-standards.md`) - TypeScript patterns, React best practices, MUI styling guidelines, and non-profit specific considerations
+- **Common Tasks** (`.copilot/common-tasks.md`) - Examples and templates for both technical tasks and domain-specific components (beneficiary management, donor engagement, impact metrics)
+- **Domain Glossary** (`.copilot/domain-glossary.md`) - Comprehensive terminology guide for non-profit education support operations, stakeholder management, and cultural considerations
+
+When working with AI assistants, refer to these files to ensure consistency with both technical conventions and Momin Trust's mission-driven approach to supporting underprivileged students.
+
+```
+
+```

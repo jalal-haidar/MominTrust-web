@@ -2,7 +2,7 @@
   "name": "mominTrust_pwa",
   "version": "2.3.0",
   "type": "module",
-  "description": "Starter kit for modern web applications",
+  "description": "Progressive Web Application for Momin Trust - A non-profit organization supporting talented underprivileged children's education through systematic fundraising and financial assistance",
   "homepage": "",
   "repository": {
     "type": "git",
@@ -78,8 +78,136 @@
     "url": "https://github.com/jalal-haidar"
   },
   "keywords": [
+    "non-profit",
+    "education-support",
+    "fundraising",
+    "momin-trust",
+    "charitable-organization",
+    "student-assistance",
+    "donor-management",
+    "impact-tracking",
+    "ai-powered",
+    "artificial-intelligence",
+    "machine-learning",
+    "predictive-analytics",
+    "intelligent-automation",
+    "ai-chatbot",
+    "smart-recommendations",
+    "data-driven-insights",
     "react",
     "pwa",
-    "vite"
-  ]
+    "typescript",
+    "mui",
+    "recoil",
+    "progressive-web-app",
+    "accessibility",
+    "mobile-first",
+    "transparency",
+    "community-outreach"
+  ],
+  "engineStrict": true,
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "ai-context": {
+    "organization": {
+      "name": "Momin Trust",
+      "type": "Non-profit organization",
+      "mission": "Supporting talented underprivileged children's education through systematic fundraising and financial assistance",
+      "target-audience": [
+        "Donors",
+        "Beneficiaries",
+        "Volunteers",
+        "Community members"
+      ],
+      "core-activities": [
+        "Identifying talented students",
+        "Fundraising",
+        "Financial assistance",
+        "Impact tracking",
+        "Community outreach"
+      ]
+    },
+    "application": {
+      "purpose": "Dual-function website and mobile app to maximize online presence and facilitate organizational goals",
+      "key-features": [
+        "Beneficiary management",
+        "Donor engagement",
+        "Impact metrics",
+        "Transparency portal",
+        "Success stories",
+        "Fund tracking",
+        "AI-powered recommendations",
+        "Intelligent chatbot support",
+        "Predictive analytics",
+        "Automated content generation"
+      ]
+    },
+    "ai-integration": {
+      "donor-features": [
+        "Smart donation amount suggestions",
+        "Personalized donor communication",
+        "Predictive donation timing optimization",
+        "Intelligent donor segmentation"
+      ],
+      "beneficiary-features": [
+        "AI-assisted application screening",
+        "Academic performance prediction",
+        "Early intervention alerts",
+        "Automated progress tracking"
+      ],
+      "operational-features": [
+        "24/7 AI chatbot support",
+        "Intelligent document processing",
+        "Fraud detection systems",
+        "Resource allocation optimization"
+      ],
+      "content-features": [
+        "Multi-language AI translation",
+        "Automated impact report generation",
+        "AI-generated success stories",
+        "Social media content optimization"
+      ],
+      "ethical-guidelines": [
+        "Privacy-first AI implementation",
+        "Human oversight for critical decisions",
+        "Transparent AI usage disclosure",
+        "Regular bias auditing and prevention",
+        "Data minimization with explicit consent"
+      ]
+    },
+    "technical": {
+      "framework": "React 18 + TypeScript",
+      "build-tool": "Vite 5",
+      "ui-library": "Material-UI v5",
+      "state-management": "Recoil",
+      "styling": "Emotion (CSS-in-JS)",
+      "routing": "React Router v6",
+      "testing": "Vitest + Playwright",
+      "architecture": "Component-first with atomic design"
+    },
+    "patterns": [
+      "PWA capabilities for mobile-first experience",
+      "Error boundaries for robust user experience",
+      "Responsive design for diverse device access",
+      "Accessibility-first for inclusive design",
+      "Performance optimization for low-bandwidth users",
+      "Data privacy protection for sensitive information",
+      "Transparency and accountability features",
+      "Multilingual support consideration"
+    ]
+  }
 }

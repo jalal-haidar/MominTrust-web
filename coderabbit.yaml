@@ -1,10 +1,17 @@
-# Configuration for AI code review and context
+# Configuration for FREE AI code review and context
 # This helps AI assistants understand project preferences
 
 reviews:
-  # Enable auto-review for common patterns
+  # Enable auto-review for common patterns (FREE)
   auto_review:
     enabled: true
+    free_tier: true
+    tools:
+      - 'GitHub Actions'
+      - 'SonarCloud (Open Source)'
+      - 'ESLint + Prettier'
+      - 'TypeScript strict mode'
+      - 'Vitest coverage'
 
   # Custom rules for this project
   rules:

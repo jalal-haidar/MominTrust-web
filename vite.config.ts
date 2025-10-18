@@ -29,5 +29,10 @@ export default defineConfig({
   },
   test: {
     root: path.resolve(__dirname, './src'),
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
+      reportsDirectory: path.resolve(__dirname, 'coverage')
+    }
   },
 });

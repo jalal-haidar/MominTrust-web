@@ -22,6 +22,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run ESLint (coderabbit rules) and emit JSON report
+        run: |
+          npx eslint "src/**/*.{ts,tsx,js,jsx}" -f json -o reports/eslint/eslint-report.json || true
+      - name: Upload ESLint report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-report
+          path: reports/eslint/eslint-report.json
+
       - name: Run unit tests and generate coverage
         run: npm run test:coverage
 

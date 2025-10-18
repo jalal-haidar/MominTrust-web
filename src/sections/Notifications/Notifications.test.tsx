@@ -1,15 +1,18 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { test, expect } from 'vitest';
 import { RecoilRoot } from 'recoil';
+
+import { render, screen } from '@testing-library/react';
 import { SnackbarProvider } from 'notistack';
+import type { CustomContentProps } from 'notistack';
+import { expect, test } from 'vitest';
 
 import Notifications, { CustomNotification } from './Notifications';
 
 // Basic render test for the CustomNotification component
 test('CustomNotification renders message and title', () => {
-  // cast to any to avoid strict notistack CustomContentProps requirements in the test
-  render(<CustomNotification {...({ message: 'Hello world' } as any)} />);
+  // provide a minimal typed props object for CustomContentProps
+  const props: Partial<CustomContentProps> = { message: 'Hello world' };
+  render(<CustomNotification {...(props as CustomContentProps)} />);
   expect(screen.getByText(/Notification demo/i)).toBeInTheDocument();
   expect(screen.getByText(/Hello world/)).toBeInTheDocument();
 });

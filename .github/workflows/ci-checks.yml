@@ -1,0 +1,61 @@
+name: CI Checks
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  secret-scan:
+    name: Secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run gitleaks (secret detection)
+        uses: zricethezav/gitleaks-action@v1
+        with:
+          args: '--no-git' # scan working tree
+
+  node-quality-gates:
+    name: Node quality gates
+    needs: secret-scan
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Prettier check
+        run: npm run prettier:check
+
+      - name: Run ESLint
+        run: npm run lint:check
+
+      - name: Run TypeScript check
+        run: npm run type-check
+
+      - name: Run unit tests
+        run: npm run test:unit

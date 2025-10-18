@@ -61,7 +61,7 @@ jobs:
             **Privacy Notice**: This review maintains beneficiary data privacy standards.
 
       - name: Comment PR with Review Summary
-        uses: actions/github-script@v7
+        uses: actions/github-script@v6
         with:
           script: |
             const comment = `
@@ -86,7 +86,6 @@ jobs:
             *Powered by free AI tools for educational non-profits*
             `;
 
-            const core = require('@actions/core');
             const ctx = github.context;
 
             try {

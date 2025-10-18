@@ -13,6 +13,27 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint (coderabbit rules) and emit JSON report
+        run: |
+          npx eslint "src/**/*.{ts,tsx,js,jsx}" -f json -o reports/eslint/eslint-report.json || true
+      - name: Upload ESLint report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-report
+          path: reports/eslint/eslint-report.json
+
+      - name: Run unit tests and generate coverage
+        run: npm run test:coverage
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6
         env:

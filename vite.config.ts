@@ -29,6 +29,8 @@ export default defineConfig({
   },
   test: {
     root: path.resolve(__dirname, './src'),
+    setupFiles: [path.resolve(__dirname, 'src/test/setup.ts')],
+    environment: 'jsdom',
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov'],

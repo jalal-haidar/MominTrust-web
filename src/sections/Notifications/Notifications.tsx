@@ -11,7 +11,7 @@ import Notifier from './Notifier';
 
 // here how you can define your own notification component
 
-const CustomNotification = forwardRef(function CustomNotification(
+export const CustomNotification = forwardRef(function CustomNotification(
   { message }: CustomContentProps,
   ref: Ref<HTMLDivElement>,
 ) {

@@ -1,6 +1,7 @@
 ## Multi-stage Dockerfile for MominTrust-web (Vite + React)
 # Builder stage
-FROM node:20-alpine AS builder
+## NOTE: for strict reproducibility we pin the base image to a digest.
+FROM node:20-alpine@sha256:1ab6fc5a31d515dc7b6b25f6acfda2001821f2c2400252b6cb61044bd9f9ad48 AS builder
 WORKDIR /app
 
 # Install dependencies
@@ -13,7 +14,7 @@ ENV NODE_ENV=production
 RUN npm run build
 
 # Production stage (nginx to serve built assets)
-FROM nginx:stable-alpine AS runtime
+FROM nginx:stable-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 AS runtime
 RUN rm -rf /usr/share/nginx/html/*
 COPY --from=builder /app/dist /usr/share/nginx/html
 

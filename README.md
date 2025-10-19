@@ -296,6 +296,53 @@ In order to do a production build, run:
 npm run build # yarn build
 ```
 
+## Docker / reproducible builds (short guide)
+
+This project includes a multi-stage `Dockerfile` that builds the app with Node and serves it with `nginx`.
+
+Quick commands (Windows cmd):
+
+```cmd
+:: build production image (uses multi-stage builder + nginx runtime)
+docker build -t momintrust-web:prod .
+
+:: run the built runtime image (it serves on port 80 inside container)
+docker run --rm -p 8080:80 momintrust-web:prod
+
+:: open http://localhost:8080 to verify the served site
+```
+
+CI publishes the production image to GitHub Container Registry (GHCR) as:
+`ghcr.io/${{ github.repository_owner }}/momintrust-web:${{ github.sha }}`
+
+To pull the image locally:
+
+```cmd
+:: if the package is public
+docker pull ghcr.io/jalal-haidar/momintrust-web:c34222040cd0aa5d114785273315bf7045fdda76
+
+:: if the package is private (login first using a Personal Access Token with read:packages)
+echo %GHCR_PAT% | docker login ghcr.io -u jalal-haidar --password-stdin
+docker pull ghcr.io/jalal-haidar/momintrust-web:c34222040cd0aa5d114785273315bf7045fdda76
+```
+
+Note: when switching between the production image (nginx + built assets) and the dev server, the PWA service worker may cache assets and prevent immediate updates. If you don't see your changes after rebuilding or switching modes, open DevTools → Application → Service Workers and unregister the service worker or clear site data.
+
+Dev using Docker Compose (Windows cmd):
+
+```cmd
+:: start dev server in container (bind-mounts current folder)
+docker compose -f docker-compose.dev.yml up --build
+
+:: dev server will be available at http://localhost (this repo maps host port 80 -> container 5173 by default)
+:: If you prefer to avoid requiring elevated privileges for port 80, change `docker-compose.dev.yml` to map `5173:5173` and open http://localhost:5173
+```
+
+Tips to make builds fully reproducible:
+- Use `npm ci` (already used in the Dockerfile) so lockfile is applied.
+- Pin base image digests in `Dockerfile` (example placeholder is present at the top of `Dockerfile`).
+- Add CI to build and smoke-test the runtime image (see `.github/workflows/docker-ci.yml`).
+
 There are other scripts as well:
 
 - `prettier:check` - check if all files are formatted according to the rules.

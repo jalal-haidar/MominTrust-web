@@ -1,9 +1,9 @@
-import AddTaskIcon from '@mui/icons-material/AddTask';
-import BugReportIcon from '@mui/icons-material/BugReport';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import HomeIcon from '@mui/icons-material/Home';
 import PeopleIcon from '@mui/icons-material/People';
-import TerrainIcon from '@mui/icons-material/Terrain';
+import InfoIcon from '@mui/icons-material/Info';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import InsightsIcon from '@mui/icons-material/Insights';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
 
 import asyncComponentLoader from '@/utils/loader';
 
@@ -16,41 +16,43 @@ const routes: Routes = {
     title: 'Beneficiaries',
     icon: PeopleIcon,
   },
-  [Pages.Welcome]: {
-    component: asyncComponentLoader(() => import('@/pages/Welcome')),
-    path: '/welcome',
-    title: 'Welcome',
-    icon: HomeIcon,
-  },
   [Pages.Landing]: {
     component: asyncComponentLoader(() => import('@/pages/Landing')),
     path: '/',
     title: 'Momin Trust',
     icon: HomeIcon,
   },
-  [Pages.Page1]: {
-    component: asyncComponentLoader(() => import('@/pages/Page1')),
-    path: '/page-1',
-    title: 'Page 1',
-    icon: GitHubIcon,
+
+  [Pages.About]: {
+    component: asyncComponentLoader(() => import('@/pages/About')),
+    path: '/about',
+    title: 'About',
+    icon: InfoIcon,
   },
-  [Pages.Page2]: {
-    component: asyncComponentLoader(() => import('@/pages/Page2')),
-    path: '/page-2',
-    title: 'Page 2',
-    icon: AddTaskIcon,
+  [Pages.Donors]: {
+    component: asyncComponentLoader(() => import('@/pages/Donors')),
+    path: '/donors',
+    title: 'Donors',
+    icon: VolunteerActivismIcon,
   },
-  [Pages.Page3]: {
-    component: asyncComponentLoader(() => import('@/pages/Page3')),
-    path: '/page-3',
-    title: 'Page 3',
-    icon: TerrainIcon,
+  [Pages.Impact]: {
+    component: asyncComponentLoader(() => import('@/pages/Impact')),
+    path: '/impact',
+    title: 'Impact',
+    icon: InsightsIcon,
   },
-  [Pages.Page4]: {
-    component: asyncComponentLoader(() => import('@/pages/Page4')),
-    path: '/page-4',
-    title: 'Page 4',
-    icon: BugReportIcon,
+
+  [Pages.Apply]: {
+    component: asyncComponentLoader(() => import('@/pages/Apply')),
+    path: '/apply',
+    title: 'Apply',
+    icon: VolunteerActivismIcon,
+  },
+  [Pages.Contact]: {
+    component: asyncComponentLoader(() => import('@/pages/Contact')),
+    path: '/contact',
+    title: 'Contact',
+    icon: ContactMailIcon,
   },
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/pages/NotFound')),

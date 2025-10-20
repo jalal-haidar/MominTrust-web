@@ -9,7 +9,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Container from '@mui/material/Container';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import { Link as RouterLink } from 'react-router-dom';
 
 import { FlexBox } from '@/components/styled';
 import { title } from '@/config';
@@ -71,8 +70,7 @@ function Header() {
 
               {/* Organization Logo/Title - with better styling */}
               <Button
-                component={RouterLink}
-                to="/"
+                href="/"
                 color="inherit"
                 sx={{
                   fontWeight: 700,
@@ -96,7 +94,15 @@ function Header() {
               sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}
             >
               {navItems.map((item) => (
-                <NavLink key={item.name} component={RouterLink} to={item.path} color="inherit">
+                <NavLink
+                  key={item.name}
+                  href={item.path}
+                  color="inherit"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = item.path;
+                  }}
+                >
                   {item.name}
                 </NavLink>
               ))}
@@ -108,11 +114,14 @@ function Header() {
             <FlexBox>
               {/* Donate Button */}
               <DonateButton
-                component={RouterLink}
-                to="/donors"
+                href="/donors"
                 variant="contained"
                 color="secondary"
                 startIcon={<FavoriteIcon />}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = '/donors';
+                }}
                 sx={{
                   display: { xs: 'none', sm: 'flex' },
                   mr: 2,

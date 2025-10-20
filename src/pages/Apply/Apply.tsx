@@ -121,13 +121,7 @@ function Apply() {
                       .padStart(4, '0')}
                   </strong>
                 </Typography>
-                <Button
-                  component={RouterLink}
-                  to="/"
-                  variant="contained"
-                  color="primary"
-                  sx={{ mt: 2 }}
-                >
+                <Button href="/" variant="contained" color="primary" sx={{ mt: 2 }}>
                   Return to Home
                 </Button>
               </Box>

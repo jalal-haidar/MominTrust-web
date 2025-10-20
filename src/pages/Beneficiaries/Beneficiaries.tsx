@@ -72,9 +72,7 @@ const Beneficiaries: React.FC = () => {
   return (
     <PageContainer>
       <PageSection>
-        <PageTitle variant="h4" component="h1">
-          Beneficiaries
-        </PageTitle>
+        <PageTitle variant="h4">Beneficiaries</PageTitle>
 
         {listLoadable.state === 'hasError' && (
           <Alert severity="warning" sx={{ mb: 3 }}>

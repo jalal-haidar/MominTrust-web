@@ -184,7 +184,6 @@ function Donors() {
         <Grid container spacing={2} sx={{ width: '100%' }}>
           <Grid item xs={12} md={6} sx={{ pl: { xs: 3, md: 8 }, pr: { xs: 3, md: 0 } }}>
             <Typography
-              component="h1"
               variant="h2"
               sx={{
                 fontWeight: 800,
@@ -295,7 +294,6 @@ function Donors() {
       {/* Donation Tiers Section */}
       <Box sx={{ mb: 10 }}>
         <Typography
-          component="h2"
           variant="h3"
           align="center"
           sx={{
@@ -381,14 +379,13 @@ function Donors() {
                     >
                       {tier.icon}
                     </Avatar>
-                    <Typography variant="h6" component="h3" sx={{ fontWeight: 600 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
                       {tier.title}
                     </Typography>
                   </Box>
 
                   <Typography
                     variant="h4"
-                    component="div"
                     sx={{
                       fontWeight: 700,
                       color:
@@ -405,7 +402,6 @@ function Donors() {
 
                   <Typography
                     variant="subtitle1"
-                    component="div"
                     sx={{ color: theme.palette.text.secondary, mb: 3 }}
                   >
                     {tier.period}
@@ -421,13 +417,7 @@ function Donors() {
 
       {/* Payment Methods Section */}
       <Box sx={{ mb: 10, px: { xs: 2, md: 4 } }}>
-        <Typography
-          component="h2"
-          variant="h4"
-          align="center"
-          gutterBottom
-          sx={{ fontWeight: 600, mb: 4 }}
-        >
+        <Typography variant="h4" align="center" gutterBottom sx={{ fontWeight: 600, mb: 4 }}>
           Payment Methods
         </Typography>
 
@@ -622,7 +612,7 @@ function Donors() {
           borderRadius: { xs: 0, md: 2 },
         }}
       >
-        <Typography component="h2" variant="h4" align="center" sx={{ fontWeight: 600, mb: 6 }}>
+        <Typography variant="h4" align="center" sx={{ fontWeight: 600, mb: 6 }}>
           Donor Testimonials
         </Typography>
 
@@ -677,7 +667,7 @@ function Donors() {
 
       {/* FAQs Section */}
       <Box sx={{ mb: 10, px: { xs: 2, md: 4 } }}>
-        <Typography component="h2" variant="h4" align="center" sx={{ fontWeight: 600, mb: 5 }}>
+        <Typography variant="h4" align="center" sx={{ fontWeight: 600, mb: 5 }}>
           Frequently Asked Questions
         </Typography>
 
@@ -738,7 +728,7 @@ function Donors() {
           textAlign: 'center',
         }}
       >
-        <Typography component="h2" variant="h3" gutterBottom sx={{ fontWeight: 700 }}>
+        <Typography variant="h3" gutterBottom sx={{ fontWeight: 700 }}>
           Ready to Make an Impact?
         </Typography>
         <Typography

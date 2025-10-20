@@ -22,13 +22,13 @@ function About() {
   return (
     <>
       <Meta title="Momin Trust" />
-      <PageContainer component="main">
-        <Box sx={{ mb: 5 }}>
+      <PageContainer>
+        <Box sx={{ mb: 5 }} component="main">
           <Hero role="region" aria-labelledby="about-hero-title">
-            <PageTitle id="about-hero-title" variant="h3" component="h1">
+            <PageTitle id="about-hero-title" variant="h3">
               About Momin Trust
             </PageTitle>
-            <Typography sx={{ mt: 2 }} variant="h6" component="p">
+            <Typography sx={{ mt: 2 }} variant="h6">
               We exist to support students and families through targeted educational and
               humanitarian programs that preserve dignity and promote long-term opportunity.
             </Typography>
@@ -36,7 +36,7 @@ function About() {
         </Box>
 
         <PageSection>
-          <SectionTitle id="mission-title" variant="h4" component="h2">
+          <SectionTitle id="mission-title" variant="h4">
             Our Mission
           </SectionTitle>
           <Typography sx={{ mt: 2 }} variant="body1">
@@ -129,8 +129,8 @@ function About() {
         </PageSection>
 
         <PageSection>
-          <SectionTitle id="history-title" variant="h4" component="h2">
-            Our Story
+          <SectionTitle id="history-title" variant="h4">
+            Our History
           </SectionTitle>
           <Typography sx={{ mt: 2, mb: 4 }} variant="body1">
             Founded in 2019, Momin Trust began with a mission to identify brilliant students from
@@ -162,7 +162,7 @@ function About() {
         <Divider sx={{ my: 4 }} />
 
         <Section role="region" aria-labelledby="contact-title">
-          <SectionTitle id="contact-title" variant="h5" component="h2">
+          <SectionTitle id="contact-title" variant="h5">
             Learn More / Get Involved
           </SectionTitle>
           <Typography sx={{ mt: 1 }} variant="body1">
@@ -171,11 +171,26 @@ function About() {
           </Typography>
 
           <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
-            <Button component={Link} to="/" variant="contained" startIcon={<HomeIcon />}>
+            <Button
+              href="/"
+              variant="contained"
+              startIcon={<HomeIcon />}
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/';
+              }}
+            >
               Back to Home
             </Button>
 
-            <Button component={Link} to="/contact" variant="outlined">
+            <Button
+              href="/contact"
+              variant="outlined"
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = '/contact';
+              }}
+            >
               Contact Us
             </Button>
           </Box>

@@ -6,7 +6,6 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Link as RouterLink } from 'react-router-dom';
 
 import Hero from '@/components/Hero/Hero';
 import ImpactMetrics from '@/components/ImpactMetrics/ImpactMetrics';
@@ -39,9 +38,7 @@ const Landing = () => {
       <PageContainer maxWidth="lg">
         {/* Impact Section */}
         <PageSection>
-          <PageTitle variant="h4" component="h2">
-            Our Impact
-          </PageTitle>
+          <PageTitle variant="h4">Our Impact</PageTitle>
           <ImpactMetrics />
         </PageSection>
 
@@ -49,9 +46,7 @@ const Landing = () => {
 
         {/* Core Values Section */}
         <PageSection>
-          <SectionTitle variant="h4" component="h2">
-            Our Core Values
-          </SectionTitle>
+          <SectionTitle variant="h4">Our Core Values</SectionTitle>
 
           <Grid container spacing={4} sx={{ mt: 3 }}>
             <Grid item xs={12} md={4}>
@@ -173,7 +168,6 @@ const Landing = () => {
         <PageSection>
           <SectionTitle
             variant="h4"
-            component="h2"
             sx={{
               fontSize: { xs: '1.5rem', sm: '2rem' }, // Smaller on mobile
               mb: { xs: 1, sm: 1.5 }, // Less margin on mobile
@@ -270,8 +264,7 @@ const Landing = () => {
             <Button
               variant="outlined"
               color="primary"
-              component={RouterLink}
-              to="/beneficiaries"
+              href="/beneficiaries"
               endIcon={<ArrowForwardIcon />}
               sx={{
                 mt: { xs: 1, sm: 2 },
@@ -297,9 +290,7 @@ const Landing = () => {
 
         {/* Donation Section */}
         <PageSection>
-          <SectionTitle variant="h4" component="h2">
-            Support Our Work
-          </SectionTitle>
+          <SectionTitle variant="h4">Support Our Work</SectionTitle>
 
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
@@ -354,8 +345,7 @@ const Landing = () => {
                 <Button
                   variant="contained"
                   color="secondary"
-                  component={RouterLink}
-                  to="/donors"
+                  href="/donors"
                   size="large"
                   sx={{
                     mt: 1,

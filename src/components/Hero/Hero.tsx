@@ -1,5 +1,4 @@
 import { Box, Button, Container, Typography, useTheme, Grid, Paper, Avatar } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
 import SchoolIcon from '@mui/icons-material/School';
 import PeopleIcon from '@mui/icons-material/People';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -148,8 +147,7 @@ const Hero = () => {
               <Button
                 variant="contained"
                 color="secondary"
-                component={RouterLink}
-                to="/donate"
+                href="/donate"
                 aria-label="Donate to Momin Trust"
                 size="large"
                 sx={{
@@ -193,8 +191,7 @@ const Hero = () => {
               </Button>
               <Button
                 variant="outlined"
-                component={RouterLink}
-                to="/apply"
+                href="/apply"
                 aria-label="Apply for support"
                 size="large"
                 sx={{

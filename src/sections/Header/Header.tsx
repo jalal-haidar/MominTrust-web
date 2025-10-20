@@ -34,6 +34,7 @@ function Header() {
     { name: 'About Us', path: '/about' },
     { name: 'Beneficiaries', path: '/beneficiaries' },
     { name: 'Our Impact', path: '/impact' },
+    { name: 'Donors', path: '/donors' },
     { name: 'Apply', path: '/apply' },
     { name: 'Contact', path: '/contact' },
   ];

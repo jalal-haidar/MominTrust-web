@@ -1,7 +1,10 @@
-import { Box, Container, Grid, Typography, Button, Paper, Divider, useTheme } from '@mui/material';
+import { Box, Grid, Typography, Button, Divider, useTheme, Chip } from '@mui/material';
 import SchoolIcon from '@mui/icons-material/School';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import { Link as RouterLink } from 'react-router-dom';
 
 import Hero from '@/components/Hero/Hero';
@@ -171,7 +174,7 @@ const Landing = () => {
             Featured Beneficiaries
           </SectionTitle>
           <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-            Every student's privacy is protected while showcasing their academic achievements.
+            Every student&apos;s privacy is protected while showcasing their academic achievements.
           </Typography>
 
           <Grid container spacing={3} alignItems="stretch">
@@ -203,23 +206,53 @@ const Landing = () => {
             Support Our Work
           </SectionTitle>
 
-          <Grid container spacing={3} alignItems="center">
+          <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={6}>
               <DonationCard
                 title="General Fund"
                 raised={230000}
                 target={500000}
+                donorCount={142}
+                impactItems={[
+                  { icon: SchoolIcon, amount: 25, description: 'School supplies for one month' },
+                  { icon: MenuBookIcon, amount: 50, description: 'Textbooks for one semester' },
+                  {
+                    icon: LocalLibraryIcon,
+                    amount: 100,
+                    description: 'Full scholarship for one month',
+                  },
+                ]}
                 onDonateCheckout={(amount) => alert(`Proceed to checkout: $${amount}`)}
               />
             </Grid>
             <Grid item xs={12} md={6}>
+              <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+                Your Contribution Makes a Difference
+              </Typography>
               <Typography variant="body1" sx={{ mb: 2 }}>
                 Your donation helps cover tuition, school supplies, and mentoring for talented
                 students who otherwise could not continue their education.
               </Typography>
-              <Typography variant="body2" color="text.secondary">
-                We ensure dignity and privacy for all beneficiaries, with 90% of funds directly
-                supporting students.
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                <strong>90% of funds</strong> go directly to student support through:
+              </Typography>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mb: 3 }}>
+                <Chip icon={<SchoolIcon />} label="Tuition" color="primary" variant="outlined" />
+                <Chip
+                  icon={<MenuBookIcon />}
+                  label="Textbooks"
+                  color="primary"
+                  variant="outlined"
+                />
+                <Chip
+                  icon={<AutoStoriesIcon />}
+                  label="School Supplies"
+                  color="primary"
+                  variant="outlined"
+                />
+              </Box>
+              <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+                We ensure dignity and privacy for all beneficiaries.
                 <strong> Your support changes lives.</strong>
               </Typography>
               <Box sx={{ mt: 3 }}>
@@ -228,7 +261,13 @@ const Landing = () => {
                   color="secondary"
                   component={RouterLink}
                   to="/donors"
-                  sx={{ mt: 1 }}
+                  size="large"
+                  sx={{
+                    mt: 1,
+                    px: 3,
+                    py: 1,
+                    fontWeight: 600,
+                  }}
                 >
                   Learn More About Donating
                 </Button>

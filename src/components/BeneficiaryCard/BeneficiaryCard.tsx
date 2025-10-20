@@ -32,6 +32,7 @@ const BeneficiaryCard = ({ b }: { b: BeneficiaryPreview }) => {
         },
         overflow: 'visible',
         position: 'relative',
+        height: '100%', // Ensures consistent card height
       }}
       role="group"
       aria-labelledby={`beneficiary-${b.id}-grade`}
@@ -58,8 +59,8 @@ const BeneficiaryCard = ({ b }: { b: BeneficiaryPreview }) => {
         </Box>
       )}
 
-      <CardActionArea>
-        <CardContent>
+      <CardActionArea sx={{ height: '100%' }}>
+        <CardContent sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <Avatar
               sx={{
@@ -75,12 +76,15 @@ const BeneficiaryCard = ({ b }: { b: BeneficiaryPreview }) => {
             >
               {b.initials}
             </Avatar>
-            <Box>
+            <Box sx={{ minHeight: '72px' }}>
               <Typography
                 id={`beneficiary-${b.id}-grade`}
                 component="div"
                 variant="h6"
-                sx={{ fontWeight: 600 }}
+                sx={{
+                  fontWeight: 600,
+                  whiteSpace: 'nowrap', // Prevents text wrapping
+                }}
               >
                 Grade {b.grade} Student
               </Typography>
@@ -90,7 +94,15 @@ const BeneficiaryCard = ({ b }: { b: BeneficiaryPreview }) => {
             </Box>
           </Box>
 
-          <Box sx={{ mt: 2.5, display: 'flex', justifyContent: 'space-between' }}>
+          <Box
+            sx={{
+              mt: 'auto',
+              pt: 2.5,
+              display: 'flex',
+              justifyContent: 'space-between',
+              width: '100%',
+            }}
+          >
             <Chip
               label={`Academic: ${b.academicScore ?? 'N/A'}`}
               size="small"

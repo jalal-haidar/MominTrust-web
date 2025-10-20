@@ -1,83 +1,186 @@
-import Container from '@mui/material/Container';
+import { Link } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Button from '@mui/material/Button';
-import { Link } from 'react-router-dom';
 import HomeIcon from '@mui/icons-material/Home';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import PeopleIcon from '@mui/icons-material/People';
+import TimelineIcon from '@mui/icons-material/Timeline';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { useTheme } from '@mui/material/styles';
 
 import Meta from '@/components/Meta';
-import { FullSizeCenteredFlexBox } from '@/components/styled';
+import { PageContainer, PageSection, PageTitle, SectionTitle } from '@/components/styled';
 import { Hero, Section } from './styled';
 
 function About() {
+  const theme = useTheme();
+
   return (
     <>
       <Meta title="Momin Trust" />
-      <Container sx={{ height: '100%', py: 4 }} component="main">
-        <FullSizeCenteredFlexBox flexDirection="column">
+      <PageContainer component="main">
+        <Box sx={{ mb: 5 }}>
           <Hero role="region" aria-labelledby="about-hero-title">
-            <Typography id="about-hero-title" variant="h3" component="h1">
-              Momin Trust
-            </Typography>
+            <PageTitle id="about-hero-title" variant="h3" component="h1">
+              About Momin Trust
+            </PageTitle>
             <Typography sx={{ mt: 2 }} variant="h6" component="p">
               We exist to support students and families through targeted educational and
               humanitarian programs that preserve dignity and promote long-term opportunity.
             </Typography>
           </Hero>
+        </Box>
 
-          <Section role="region" aria-labelledby="mission-title">
-            <Typography id="mission-title" variant="h4" component="h2">
-              Our Mission
-            </Typography>
-            <Typography sx={{ mt: 1 }} variant="body1">
-              Momin Trust connects donors with measurable impact projects focused on student
-              sponsorship, educational resources, and transparent reporting. We prioritize privacy,
-              cultural sensitivity, and stewardship of funds.
-            </Typography>
-          </Section>
+        <PageSection>
+          <SectionTitle id="mission-title" variant="h4" component="h2">
+            Our Mission
+          </SectionTitle>
+          <Typography sx={{ mt: 2 }} variant="body1">
+            Momin Trust connects donors with measurable impact projects focused on student
+            sponsorship, educational resources, and transparent reporting. We prioritize privacy,
+            cultural sensitivity, and stewardship of funds.
+          </Typography>
+        </PageSection>
 
-          <Section role="region" aria-labelledby="values-title">
-            <Typography id="values-title" variant="h4" component="h2">
-              Values & Principles
-            </Typography>
-            <Box component="ul" sx={{ mt: 1, pl: 3 }}>
-              <li>
-                <Typography variant="body1">Privacy-first beneficiary presentation</Typography>
-              </li>
-              <li>
-                <Typography variant="body1">Transparent use of funds and reporting</Typography>
-              </li>
-              <li>
-                <Typography variant="body1">
-                  Dignified storytelling and cultural sensitivity
-                </Typography>
-              </li>
-            </Box>
-          </Section>
+        <PageSection sx={{ my: 5 }}>
+          <Grid container spacing={4}>
+            <Grid item xs={12} md={4}>
+              <Card
+                elevation={1}
+                sx={{
+                  height: '100%',
+                  borderLeft: `4px solid ${theme.palette.primary.main}`,
+                  transition: 'transform 0.3s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-5px)',
+                    boxShadow: 3,
+                  },
+                }}
+              >
+                <CardContent sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                    <VerifiedIcon color="primary" sx={{ mr: 1 }} />
+                    <Typography variant="h6">Transparency</Typography>
+                  </Box>
+                  <Typography variant="body2">
+                    We believe in full transparency about how donations are used, with detailed
+                    reporting on outcomes and impact metrics available to all stakeholders.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
 
-          <Divider sx={{ width: '100%', my: 2 }} />
+            <Grid item xs={12} md={4}>
+              <Card
+                elevation={1}
+                sx={{
+                  height: '100%',
+                  borderLeft: `4px solid ${theme.palette.secondary.main}`,
+                  transition: 'transform 0.3s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-5px)',
+                    boxShadow: 3,
+                  },
+                }}
+              >
+                <CardContent sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                    <PeopleIcon color="secondary" sx={{ mr: 1 }} />
+                    <Typography variant="h6">Dignity</Typography>
+                  </Box>
+                  <Typography variant="body2">
+                    We present all beneficiaries with dignity and respect, protecting their privacy
+                    while highlighting their achievements and potential.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
 
-          <Section role="region" aria-labelledby="contact-title">
-            <Typography id="contact-title" variant="h5" component="h2">
-              Learn More / Get Involved
+            <Grid item xs={12} md={4}>
+              <Card
+                elevation={1}
+                sx={{
+                  height: '100%',
+                  borderLeft: `4px solid ${theme.palette.primary.light}`,
+                  transition: 'transform 0.3s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-5px)',
+                    boxShadow: 3,
+                  },
+                }}
+              >
+                <CardContent sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                    <TimelineIcon color="info" sx={{ mr: 1 }} />
+                    <Typography variant="h6">Long-term Impact</Typography>
+                  </Box>
+                  <Typography variant="body2">
+                    We focus on sustainable solutions that create lasting change through education,
+                    mentoring, and community support systems.
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
+        </PageSection>
+
+        <PageSection>
+          <SectionTitle id="history-title" variant="h4" component="h2">
+            Our Story
+          </SectionTitle>
+          <Typography sx={{ mt: 2, mb: 4 }} variant="body1">
+            Founded in 2019, Momin Trust began with a mission to identify brilliant students from
+            underprivileged backgrounds and provide the financial support they need to continue
+            their education. What started with supporting 5 students has now grown to a program that
+            supports over 50 talented individuals across multiple regions.
+          </Typography>
+
+          <Box
+            sx={{
+              p: 3,
+              borderRadius: 2,
+              bgcolor:
+                theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.03)',
+              borderLeft: `4px solid ${theme.palette.primary.main}`,
+              mb: 4,
+            }}
+          >
+            <Typography variant="h6" gutterBottom>
+              &ldquo;Education is the most powerful weapon which you can use to change the
+              world.&rdquo;
             </Typography>
-            <Typography sx={{ mt: 1 }} variant="body1">
-              Visit our Contact page to reach out, explore donation opportunities on the Donors
-              page, or read our Impact reports for transparency on outcomes.
+            <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'right' }}>
+              — Nelson Mandela
             </Typography>
-            <Button
-              component={Link}
-              to="/"
-              variant="contained"
-              startIcon={<HomeIcon />}
-              sx={{ mt: 3 }}
-            >
-              Back to Home Page
+          </Box>
+        </PageSection>
+
+        <Divider sx={{ my: 4 }} />
+
+        <Section role="region" aria-labelledby="contact-title">
+          <SectionTitle id="contact-title" variant="h5" component="h2">
+            Learn More / Get Involved
+          </SectionTitle>
+          <Typography sx={{ mt: 1 }} variant="body1">
+            Visit our Contact page to reach out, explore donation opportunities on the Donors page,
+            or read our Impact reports for transparency on outcomes.
+          </Typography>
+
+          <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
+            <Button component={Link} to="/" variant="contained" startIcon={<HomeIcon />}>
+              Back to Home
             </Button>
-          </Section>
-        </FullSizeCenteredFlexBox>
-      </Container>
+
+            <Button component={Link} to="/contact" variant="outlined">
+              Contact Us
+            </Button>
+          </Box>
+        </Section>
+      </PageContainer>
     </>
   );
 }

@@ -42,20 +42,36 @@ function Header() {
 
   return (
     <Box sx={{ flexGrow: 1 }} data-pw={`theme-${theme}`}>
-      <AppBar color="transparent" elevation={1} position="static">
+      <AppBar
+        color={theme === 'light' ? 'primary' : 'transparent'}
+        elevation={2}
+        position="static"
+        sx={{
+          py: 0.5,
+          borderBottom: theme === 'dark' ? '1px solid rgba(255,255,255,0.1)' : 'none',
+        }}
+      >
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <FlexBox sx={{ alignItems: 'center' }}>
             <IconButton
               onClick={sidebarActions.toggle}
               size="large"
               edge="start"
-              color="info"
+              color="inherit"
               aria-label="menu"
               sx={{ mr: 1 }}
             >
               <MenuIcon />
             </IconButton>
-            <Button onClick={showNotification} color="info">
+            <Button
+              onClick={showNotification}
+              color="inherit"
+              sx={{
+                fontWeight: 700,
+                fontSize: '1.2rem',
+                letterSpacing: '0.5px',
+              }}
+            >
               {title}
             </Button>
           </FlexBox>
@@ -73,19 +89,33 @@ function Header() {
               </Tooltip>
             </FlexBox>
             <Divider orientation="vertical" flexItem />
-            <Tooltip title="It's open source" arrow>
-              <IconButton color="info" size="large" component="a" href={repository} target="_blank">
+            <Tooltip title="View source on GitHub" arrow>
+              <IconButton
+                color="inherit"
+                size="large"
+                component="a"
+                href={repository}
+                target="_blank"
+                sx={{
+                  transition: 'transform 0.2s',
+                  '&:hover': { transform: 'scale(1.1)' },
+                }}
+              >
                 <GitHubIcon />
               </IconButton>
             </Tooltip>
             <Divider orientation="vertical" flexItem />
             <Tooltip title="Switch theme" arrow>
               <IconButton
-                color="info"
+                color="inherit"
                 edge="end"
                 size="large"
                 onClick={themeActions.toggle}
                 data-pw="theme-toggle"
+                sx={{
+                  transition: 'transform 0.2s',
+                  '&:hover': { transform: 'rotate(12deg)' },
+                }}
               >
                 <ThemeIcon />
               </IconButton>

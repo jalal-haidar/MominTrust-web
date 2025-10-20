@@ -43,7 +43,7 @@ const Landing = () => {
               title="General Fund"
               raised={230000}
               target={500000}
-              onDonate={() => alert('Donate clicked')}
+              onDonateCheckout={(amount) => alert(`Proceed to checkout: $${amount}`)}
             />
           </Grid>
           <Grid item xs={12} md={6}>

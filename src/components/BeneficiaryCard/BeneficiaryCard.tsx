@@ -18,6 +18,8 @@ const BeneficiaryCard = ({ b }: { b: BeneficiaryPreview }) => {
         '&:hover': { transform: 'translateY(-6px)' },
         boxShadow: 1,
       }}
+      role="group"
+      aria-labelledby={`beneficiary-${b.id}-grade`}
     >
       <CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
@@ -28,11 +30,17 @@ const BeneficiaryCard = ({ b }: { b: BeneficiaryPreview }) => {
               bgcolor: theme.palette.primary.main,
               color: theme.palette.primary.contrastText,
             }}
+            aria-hidden
           >
             {b.initials}
           </Avatar>
           <Box>
-            <Typography component="div" variant="subtitle1" sx={{ fontWeight: 600 }}>
+            <Typography
+              id={`beneficiary-${b.id}-grade`}
+              component="div"
+              variant="subtitle1"
+              sx={{ fontWeight: 600 }}
+            >
               Grade {b.grade}
             </Typography>
             <Typography variant="body2" color="text.secondary">

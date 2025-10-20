@@ -26,7 +26,7 @@ const routes: Routes = {
   [Pages.About]: {
     component: asyncComponentLoader(() => import('@/pages/About')),
     path: '/about',
-    title: 'About',
+    title: 'Momin Trust',
     icon: InfoIcon,
   },
   [Pages.Donors]: {

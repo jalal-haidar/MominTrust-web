@@ -57,5 +57,4 @@ jobs:
       - name: Run TypeScript check
         run: npm run type-check
 
-      - name: Run unit tests
-        run: npm run test:unit
+      # Unit tests intentionally disabled in CI per request

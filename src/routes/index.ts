@@ -4,6 +4,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import InsightsIcon from '@mui/icons-material/Insights';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
+import HandshakeIcon from '@mui/icons-material/Handshake';
 
 import asyncComponentLoader from '@/utils/loader';
 
@@ -41,7 +42,12 @@ const routes: Routes = {
     title: 'Impact',
     icon: InsightsIcon,
   },
-
+  [Pages.Partners]: {
+    component: asyncComponentLoader(() => import('@/pages/Partners')),
+    path: '/partners',
+    title: 'Partners',
+    icon: HandshakeIcon,
+  },
   [Pages.Apply]: {
     component: asyncComponentLoader(() => import('@/pages/Apply')),
     path: '/apply',

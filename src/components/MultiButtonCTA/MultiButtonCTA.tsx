@@ -4,6 +4,7 @@ type ButtonConfig = {
   text: string;
   link: string;
   primary?: boolean;
+  onClick?: () => void;
 };
 
 type MultiButtonCTAProps = {
@@ -42,7 +43,8 @@ const MultiButtonCTA = ({
           <Grid item key={`${button.text}-${button.link}`}>
             <Typography
               component="a"
-              href={button.link}
+              href={button.onClick ? '#' : button.link}
+              onClick={button.onClick}
               variant="button"
               sx={{
                 display: 'inline-block',
@@ -53,6 +55,7 @@ const MultiButtonCTA = ({
                 borderRadius: 1,
                 fontWeight: 'bold',
                 textDecoration: 'none',
+                cursor: 'pointer',
                 '&:hover': {
                   bgcolor: button.primary ? 'primary.dark' : 'background.default',
                 },

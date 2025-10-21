@@ -15,6 +15,7 @@ enum Pages {
   Beneficiaries,
   Donors,
   Impact,
+  Partners,
   Apply,
   Contact,
   Page1,

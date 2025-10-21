@@ -24,7 +24,9 @@ function Sidebar() {
   const mainRoutes = Object.values(routes).filter(
     (route) =>
       route.title &&
-      ['/beneficiaries', '/donors', '/impact', '/apply', '/about'].includes(route.path as string),
+      ['/beneficiaries', '/donors', '/impact', '/partners', '/apply', '/about'].includes(
+        route.path as string,
+      ),
   );
 
   const homeRoute = Object.values(routes).find((route) => route.path === '/');

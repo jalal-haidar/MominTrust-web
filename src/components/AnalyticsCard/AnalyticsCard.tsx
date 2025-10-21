@@ -1,15 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  useTheme,
-} from '@mui/material';
-import {
-  TrendingUp,
-  TrendingDown,
-} from '@mui/icons-material';
+import { Box, Card, CardContent, Typography, useTheme } from '@mui/material';
+import { TrendingUp, TrendingDown } from '@mui/icons-material';
 
 interface AnalyticsCardProps {
   title: string;
@@ -19,13 +10,7 @@ interface AnalyticsCardProps {
   subtitle?: string;
 }
 
-const AnalyticsCard: React.FC<AnalyticsCardProps> = ({
-  title,
-  value,
-  icon,
-  growth,
-  subtitle,
-}) => {
+const AnalyticsCard: React.FC<AnalyticsCardProps> = ({ title, value, icon, growth, subtitle }) => {
   const theme = useTheme();
   const [animatedValue, setAnimatedValue] = useState<string>('0');
 
@@ -116,7 +101,8 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({
                 fontWeight: 'medium',
               }}
             >
-              {growth > 0 ? '+' : ''}{growth}% this month
+              {growth > 0 ? '+' : ''}
+              {growth}% this month
             </Typography>
           </Box>
         )}

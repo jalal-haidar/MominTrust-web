@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  LinearProgress,
-  useTheme,
-} from '@mui/material';
+import { Box, Card, CardContent, Typography, LinearProgress, useTheme } from '@mui/material';
 
 interface RegionData {
   region: string;

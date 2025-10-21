@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  LinearProgress,
-  useTheme,
-} from '@mui/material';
+import { Box, Card, CardContent, Typography, LinearProgress, useTheme } from '@mui/material';
 import { Timeline } from '@mui/icons-material';
 
 interface GoalProgressProps {
@@ -15,11 +8,7 @@ interface GoalProgressProps {
   percentage: number;
 }
 
-const GoalProgress: React.FC<GoalProgressProps> = ({
-  currentAmount,
-  targetAmount,
-  percentage,
-}) => {
+const GoalProgress: React.FC<GoalProgressProps> = ({ currentAmount, targetAmount, percentage }) => {
   const theme = useTheme();
 
   const formatCurrency = (amount: number) => {

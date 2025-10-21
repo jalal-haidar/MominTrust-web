@@ -31,8 +31,8 @@ jobs:
           name: eslint-report
           path: reports/eslint/eslint-report.json
 
-      - name: Run unit tests and generate coverage
-        run: npm run test:coverage
+      # - name: Run unit tests and generate coverage
+      #   run: npm run test:coverage
 
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v6

@@ -29,6 +29,7 @@ function Sidebar() {
         '/donors',
         '/impact',
         '/analytics',
+        '/your-impact',
         '/partners',
         '/apply',
         '/about',

@@ -14,6 +14,7 @@ import { FlexBox } from '@/components/styled';
 import { title } from '@/config';
 import useSidebar from '@/store/sidebar';
 import useTheme from '@/store/theme';
+import ProfileMenu from '@/components/ProfileMenu';
 
 import { StyledAppBar, DonateButton, NavLink } from './styled';
 
@@ -149,6 +150,9 @@ function Header() {
                   <ThemeIcon />
                 </IconButton>
               </Tooltip>
+
+              {/* Profile Menu */}
+              <ProfileMenu userName="John Donor" currentStreak={8} />
 
               {/* Removed redundant mobile menu toggle */}
             </FlexBox>

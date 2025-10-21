@@ -67,6 +67,12 @@ const routes: Routes = {
     title: 'Analytics',
     icon: AnalyticsIcon,
   },
+  [Pages.YourImpact]: {
+    component: asyncComponentLoader(() => import('@/pages/YourImpact')),
+    path: '/your-impact',
+    title: 'Your Impact',
+    icon: InsightsIcon,
+  },
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/pages/NotFound')),
     path: '*',

@@ -5,6 +5,7 @@ import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import InsightsIcon from '@mui/icons-material/Insights';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import HandshakeIcon from '@mui/icons-material/Handshake';
+import AnalyticsIcon from '@mui/icons-material/Analytics';
 
 import asyncComponentLoader from '@/utils/loader';
 
@@ -59,6 +60,12 @@ const routes: Routes = {
     path: '/contact',
     title: 'Contact',
     icon: ContactMailIcon,
+  },
+  [Pages.Analytics]: {
+    component: asyncComponentLoader(() => import('@/pages/Analytics')),
+    path: '/analytics',
+    title: 'Analytics',
+    icon: AnalyticsIcon,
   },
   [Pages.NotFound]: {
     component: asyncComponentLoader(() => import('@/pages/NotFound')),

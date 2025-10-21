@@ -18,6 +18,7 @@ enum Pages {
   Partners,
   Apply,
   Contact,
+  Analytics,
   Page1,
   Page2,
   Page3,

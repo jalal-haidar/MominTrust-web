@@ -51,6 +51,7 @@ import HotKeys from '@/sections/HotKeys';
 import Notifications from '@/sections/Notifications';
 import Sw from '@/sections/SW';
 import Sidebar from '@/sections/Sidebar';
+import MobileNavigation from '@/components/MobileNavigation';
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
         <Header />
         <Sidebar />
         <Pages />
+        <MobileNavigation />
       </BrowserRouter>
     </Fragment>
   );

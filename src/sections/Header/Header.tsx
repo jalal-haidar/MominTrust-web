@@ -33,6 +33,7 @@ function Header() {
     { name: 'About Us', path: '/about' },
     { name: 'Beneficiaries', path: '/beneficiaries' },
     { name: 'Our Impact', path: '/impact' },
+    { name: 'Analytics', path: '/analytics' },
     { name: 'Partners', path: '/partners' },
     { name: 'Donors', path: '/donors' },
     { name: 'Apply', path: '/apply' },

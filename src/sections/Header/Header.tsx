@@ -14,6 +14,7 @@ import { FlexBox } from '@/components/styled';
 import { title } from '@/config';
 import useSidebar from '@/store/sidebar';
 import useTheme from '@/store/theme';
+import ProfileMenu from '@/components/ProfileMenu';
 
 import { StyledAppBar, DonateButton, NavLink } from './styled';
 
@@ -33,6 +34,8 @@ function Header() {
     { name: 'About Us', path: '/about' },
     { name: 'Beneficiaries', path: '/beneficiaries' },
     { name: 'Our Impact', path: '/impact' },
+    { name: 'Analytics', path: '/analytics' },
+    { name: 'Partners', path: '/partners' },
     { name: 'Donors', path: '/donors' },
     { name: 'Apply', path: '/apply' },
     { name: 'Contact', path: '/contact' },
@@ -147,6 +150,9 @@ function Header() {
                   <ThemeIcon />
                 </IconButton>
               </Tooltip>
+
+              {/* Profile Menu */}
+              <ProfileMenu userName="John Donor" currentStreak={8} />
 
               {/* Removed redundant mobile menu toggle */}
             </FlexBox>

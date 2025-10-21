@@ -1,21 +1,14 @@
 import React, { useState, useMemo } from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
-import Box from '@mui/material/Box';
-import Chip from '@mui/material/Chip';
-import FormControl from '@mui/material/FormControl';
-import InputLabel from '@mui/material/InputLabel';
-import Select from '@mui/material/Select';
-import Paper from '@mui/material/Paper';
 
-import BeneficiaryCard, { BeneficiaryPreview } from '@/components/BeneficiaryCard/BeneficiaryCard';
+import { BeneficiaryPreview } from '@/components/BeneficiaryCard/BeneficiaryCard';
 import Loading from '@/components/Loading/Loading';
 import { useRecoilValueLoadable } from 'recoil';
 import { beneficiariesSelector } from '@/store/beneficiaries';
 import { PageContainer, PageSection, PageTitle } from '@/components/styled';
+import BeneficiaryFilters from '@/components/BeneficiaryFilters';
+import FilterChips from '@/components/FilterChips';
+import BeneficiaryGrid from '@/components/BeneficiaryGrid';
 
 const Beneficiaries: React.FC = () => {
   const listLoadable = useRecoilValueLoadable(beneficiariesSelector);
@@ -80,107 +73,27 @@ const Beneficiaries: React.FC = () => {
           </Alert>
         )}
 
-        <Paper sx={{ p: 3, mb: 4 }} elevation={1}>
-          <Typography variant="h6" gutterBottom>
-            Filter Students
-          </Typography>
+        <BeneficiaryFilters
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          gradeFilter={gradeFilter}
+          setGradeFilter={setGradeFilter}
+          regionFilter={regionFilter}
+          setRegionFilter={setRegionFilter}
+          grades={grades}
+          regions={regions}
+        />
 
-          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 2, mb: 2 }}>
-            <TextField
-              label="Search"
-              variant="outlined"
-              size="small"
-              fullWidth
-              placeholder="Search by initials or region..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+        <FilterChips
+          gradeFilter={gradeFilter}
+          regionFilter={regionFilter}
+          searchQuery={searchQuery}
+          onClearGrade={() => setGradeFilter('all')}
+          onClearRegion={() => setRegionFilter('all')}
+          onClearSearch={() => setSearchQuery('')}
+        />
 
-            <FormControl size="small" sx={{ minWidth: 120 }}>
-              <InputLabel id="grade-filter-label">Grade</InputLabel>
-              <Select
-                labelId="grade-filter-label"
-                value={gradeFilter}
-                label="Grade"
-                onChange={(e) => setGradeFilter(e.target.value)}
-              >
-                <MenuItem value="all">All Grades</MenuItem>
-                {grades.map((grade) => (
-                  <MenuItem key={grade} value={grade}>
-                    Grade {grade}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-
-            <FormControl size="small" sx={{ minWidth: 150 }}>
-              <InputLabel id="region-filter-label">Region</InputLabel>
-              <Select
-                labelId="region-filter-label"
-                value={regionFilter}
-                label="Region"
-                onChange={(e) => setRegionFilter(e.target.value)}
-              >
-                <MenuItem value="all">All Regions</MenuItem>
-                {regions.map((region) => (
-                  <MenuItem key={region} value={region}>
-                    {region}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Box>
-
-          <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-            {gradeFilter !== 'all' && (
-              <Chip
-                label={`Grade: ${gradeFilter}`}
-                onDelete={() => setGradeFilter('all')}
-                color="primary"
-                variant="outlined"
-                size="small"
-              />
-            )}
-            {regionFilter !== 'all' && (
-              <Chip
-                label={`Region: ${regionFilter}`}
-                onDelete={() => setRegionFilter('all')}
-                color="primary"
-                variant="outlined"
-                size="small"
-              />
-            )}
-            {searchQuery && (
-              <Chip
-                label={`Search: "${searchQuery}"`}
-                onDelete={() => setSearchQuery('')}
-                color="primary"
-                variant="outlined"
-                size="small"
-              />
-            )}
-          </Box>
-        </Paper>
-
-        <Box sx={{ mb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Typography variant="subtitle1">
-            Showing {filteredData.length} of {data.length} beneficiaries
-          </Typography>
-        </Box>
-
-        {filteredData.length === 0 ? (
-          <Alert severity="info" sx={{ mt: 2 }}>
-            No beneficiaries match the selected filters. Try adjusting your search criteria.
-          </Alert>
-        ) : (
-          <Grid container spacing={2} alignItems="stretch">
-            {filteredData.map((b) => (
-              <Grid key={b.id} item xs={12} sm={6} md={4} lg={3} sx={{ display: 'flex' }}>
-                <BeneficiaryCard b={b} />
-              </Grid>
-            ))}
-          </Grid>
-        )}
+        <BeneficiaryGrid beneficiaries={filteredData} totalCount={data.length} />
       </PageSection>
     </PageContainer>
   );

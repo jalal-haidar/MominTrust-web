@@ -4,8 +4,8 @@ import { FullSizeCenteredFlexBox } from '@/components/styled';
 
 function Loading() {
   return (
-    <FullSizeCenteredFlexBox>
-      <CircularProgress />
+    <FullSizeCenteredFlexBox role="status" aria-live="polite" aria-label="Loading">
+      <CircularProgress aria-hidden />
     </FullSizeCenteredFlexBox>
   );
 }

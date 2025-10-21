@@ -29,7 +29,14 @@ const Hero = () => {
         position: 'relative',
         overflow: 'hidden',
         py: { xs: 6, md: 10 },
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor:
+          theme.palette.mode === 'dark'
+            ? 'linear-gradient(135deg, #1a4d4d 0%, #0a3d3d 100%)'
+            : theme.palette.primary.main,
+        background:
+          theme.palette.mode === 'dark'
+            ? 'linear-gradient(135deg, #1a4d4d 0%, #0a3d3d 100%)'
+            : theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
         '&::before': {
           content: '""',
@@ -38,11 +45,18 @@ const Hero = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: `
-            radial-gradient(circle at 20% 30%, ${theme.palette.primary.light}40 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, ${theme.palette.primary.light}30 0%, transparent 40%),
-            radial-gradient(circle at 40% 90%, ${theme.palette.secondary.light}20 0%, transparent 30%)
-          `,
+          backgroundImage:
+            theme.palette.mode === 'dark'
+              ? `
+              radial-gradient(circle at 20% 30%, rgba(131, 197, 190, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(131, 197, 190, 0.1) 0%, transparent 40%),
+              radial-gradient(circle at 40% 90%, rgba(255, 107, 107, 0.1) 0%, transparent 30%)
+            `
+              : `
+              radial-gradient(circle at 20% 30%, ${theme.palette.primary.light}40 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, ${theme.palette.primary.light}30 0%, transparent 40%),
+              radial-gradient(circle at 40% 90%, ${theme.palette.secondary.light}20 0%, transparent 30%)
+            `,
           opacity: 0.8,
           zIndex: 0,
         },
@@ -69,7 +83,10 @@ const Hero = () => {
                 sx={{
                   fontWeight: 700,
                   fontSize: { xs: '1rem', sm: '1.2rem', md: '1.4rem' }, // Smaller on mobile
-                  color: theme.palette.secondary.light,
+                  color:
+                    theme.palette.mode === 'dark'
+                      ? '#FF8787' // Brighter coral for dark mode
+                      : theme.palette.secondary.light,
                   textTransform: 'uppercase',
                   letterSpacing: { xs: '0.8px', md: '1px' }, // Slightly tighter letter spacing on mobile
                   display: 'block',

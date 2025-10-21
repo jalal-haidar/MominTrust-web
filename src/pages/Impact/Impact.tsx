@@ -5,6 +5,7 @@ import Meta from '@/components/Meta';
 // FullSizeCenteredFlexBox removed (unused)
 import SuccessStoryCard from '@/components/SuccessStoryCard';
 import ImpactMetrics from '@/components/ImpactMetrics';
+import ImpactVisualizer from '@/components/ImpactVisualizer';
 import SectionTitle from '@/components/SectionTitle';
 import MultiButtonCTA from '@/components/MultiButtonCTA';
 
@@ -42,6 +43,10 @@ function Impact() {
 
       <Box sx={{ mt: 2, mx: { xs: -2, md: 0 } }}>
         <ImpactMetrics />
+      </Box>
+
+      <Box sx={{ mt: 6, mx: { xs: -2, md: 0 } }}>
+        <ImpactVisualizer />
       </Box>
 
       <Box

@@ -25,7 +25,7 @@ import {
 import SchoolIcon from '@mui/icons-material/School';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+// LocalLibraryIcon removed (unused) to satisfy ESLint
 import PeopleIcon from '@mui/icons-material/People';
 import CampaignProgressBar from '@/components/CampaignProgressBar/CampaignProgressBar';
 

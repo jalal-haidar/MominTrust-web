@@ -393,7 +393,7 @@ const ImpactMetrics = () => {
       },
     },
     animation: {
-      delay: (context) => {
+      delay: (context: ChartAnimationContext | undefined) => {
         // Type-safe approach for context
         if (context && typeof context.dataIndex === 'number') {
           return context.dataIndex * 100;

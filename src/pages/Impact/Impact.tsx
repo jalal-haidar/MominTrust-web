@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material';
 
 import Meta from '@/components/Meta';
-import { FullSizeCenteredFlexBox } from '@/components/styled';
+// FullSizeCenteredFlexBox removed (unused)
 import SuccessStoryCard from '@/components/SuccessStoryCard';
 import ImpactMetrics from '@/components/ImpactMetrics';
 

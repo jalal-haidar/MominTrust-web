@@ -1,16 +1,16 @@
-import Button from '@mui/material/Button';
+import Button, { ButtonProps } from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
-import { AppBar } from '@mui/material';
+import { AppBar, AppBarProps } from '@mui/material';
 
 // Styled AppBar with subtle elevation and transition effects
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
+const StyledAppBar = styled(AppBar)<AppBarProps>(({ theme }) => ({
   boxShadow: 'none',
   transition: 'all 0.3s ease-in-out',
   borderBottom: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : 'none',
 }));
 
 // Styled Button specifically for the "Donate" action
-const DonateButton = styled(Button)(({ theme }) => ({
+const DonateButton = styled(Button)<ButtonProps>(({ theme }) => ({
   borderRadius: '20px',
   padding: theme.spacing(0.8, 2),
   textTransform: 'none',
@@ -24,7 +24,7 @@ const DonateButton = styled(Button)(({ theme }) => ({
 }));
 
 // Styled navigation links with underline effect
-const NavLink = styled(Button)(({ theme }) => ({
+const NavLink = styled(Button)<ButtonProps>(({ theme }) => ({
   margin: theme.spacing(0, 0.5),
   padding: theme.spacing(1, 1.5),
   fontWeight: 500,

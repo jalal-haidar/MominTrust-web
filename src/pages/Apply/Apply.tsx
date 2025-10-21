@@ -41,10 +41,7 @@ function Apply() {
     setActiveStep((prevStep) => prevStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-    setCompleted(false);
-  };
+  // handleReset removed because not used in current UI; keep code simpler
 
   return (
     <>

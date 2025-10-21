@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
+import Container, { ContainerProps } from '@mui/material/Container';
+import Typography, { TypographyProps } from '@mui/material/Typography';
+import Paper, { PaperProps } from '@mui/material/Paper';
 import { styled } from '@mui/material/styles';
 
 // Flex containers
@@ -20,7 +20,7 @@ const FullSizeCenteredFlexBox = styled(CenteredFlexBox)({
 });
 
 // Page layout components
-const PageContainer = styled(Container)(({ theme }) => ({
+const PageContainer = styled(Container)<ContainerProps>(({ theme }) => ({
   paddingTop: theme.spacing(4),
   paddingBottom: theme.spacing(6),
 }));
@@ -30,7 +30,7 @@ const PageSection = styled(Box)(({ theme }) => ({
 }));
 
 // Card and content components
-const ContentCard = styled(Paper)(({ theme }) => ({
+const ContentCard = styled(Paper)<PaperProps>(({ theme }) => ({
   padding: theme.spacing(3),
   borderRadius: 12,
   transition: 'transform 0.2s, box-shadow 0.2s',
@@ -41,7 +41,7 @@ const ContentCard = styled(Paper)(({ theme }) => ({
 }));
 
 // Typography components
-const PageTitle = styled(Typography)(({ theme }) => ({
+const PageTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
   fontSize: '2rem',
   fontWeight: 700,
   marginBottom: theme.spacing(2),
@@ -58,7 +58,7 @@ const PageTitle = styled(Typography)(({ theme }) => ({
   },
 }));
 
-const SectionTitle = styled(Typography)(({ theme }) => ({
+const SectionTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
   fontSize: '1.5rem',
   fontWeight: 600,
   marginBottom: theme.spacing(2),

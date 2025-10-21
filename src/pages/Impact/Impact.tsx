@@ -1,12 +1,13 @@
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material';
 
 import Meta from '@/components/Meta';
 // FullSizeCenteredFlexBox removed (unused)
 import SuccessStoryCard from '@/components/SuccessStoryCard';
 import ImpactMetrics from '@/components/ImpactMetrics';
+import ImpactVisualizer from '@/components/ImpactVisualizer';
+import SectionTitle from '@/components/SectionTitle';
+import MultiButtonCTA from '@/components/MultiButtonCTA';
 
 const sampleStories = [
   {
@@ -36,7 +37,6 @@ const sampleStories = [
 ];
 
 function Impact() {
-  const theme = useTheme();
   return (
     <>
       <Meta title="Impact" />
@@ -45,54 +45,20 @@ function Impact() {
         <ImpactMetrics />
       </Box>
 
+      <Box sx={{ mt: 6, mx: { xs: -2, md: 0 } }}>
+        <ImpactVisualizer />
+      </Box>
+
       <Box
         sx={{
           mt: 10,
           mb: 6,
-          position: 'relative',
-          textAlign: 'center',
         }}
       >
-        <Typography
-          component="h2"
-          variant="h3"
-          align="center"
-          sx={{
-            fontWeight: 800,
-            position: 'relative',
-            display: 'inline-block',
-            mb: 1,
-            '&:after': {
-              content: '""',
-              position: 'absolute',
-              bottom: -10,
-              left: '25%',
-              width: '50%',
-              height: 3,
-              background: `linear-gradient(90deg, transparent, ${theme.palette.primary.main}, transparent)`,
-              borderRadius: 2,
-            },
-          }}
-        >
-          Success Stories
-        </Typography>
-
-        <Typography
-          variant="h6"
-          color="text.secondary"
-          align="center"
-          sx={{
-            mt: 3,
-            mb: 5,
-            maxWidth: 700,
-            mx: 'auto',
-            px: 2,
-            fontWeight: 400,
-          }}
-        >
-          Real-world examples of how our programs create lasting positive impact while respecting
-          privacy.
-        </Typography>
+        <SectionTitle
+          title="Success Stories"
+          subtitle="Real-world examples of how our programs create lasting positive impact while respecting privacy."
+        />
 
         <Grid container spacing={3} sx={{ px: { xs: 2, md: 4 }, mt: 4 }}>
           {sampleStories.map((s) => (
@@ -109,71 +75,21 @@ function Impact() {
         </Grid>
       </Box>
 
-      <Box
-        sx={{
-          mt: 8,
-          mb: 4,
-          py: 6,
-          px: 3,
-          bgcolor: 'primary.light',
-          borderRadius: 2,
-          textAlign: 'center',
-        }}
-      >
-        <Typography component="h2" variant="h4" gutterBottom>
-          Help Us Make a Difference
-        </Typography>
-        <Typography variant="body1" paragraph sx={{ maxWidth: '800px', mx: 'auto', mb: 4 }}>
-          Your contributions directly support education initiatives and create opportunities for
-          children in need. Join our community of donors and see the impact you can make.
-        </Typography>
-        <Grid container spacing={2} justifyContent="center">
-          <Grid item>
-            <Typography
-              component="a"
-              href="/donors"
-              variant="button"
-              sx={{
-                display: 'inline-block',
-                py: 1.5,
-                px: 4,
-                bgcolor: 'primary.main',
-                color: 'primary.contrastText',
-                borderRadius: 1,
-                fontWeight: 'bold',
-                textDecoration: 'none',
-                '&:hover': {
-                  bgcolor: 'primary.dark',
-                },
-              }}
-            >
-              Become a Donor
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography
-              component="a"
-              href="/contact"
-              variant="button"
-              sx={{
-                display: 'inline-block',
-                py: 1.5,
-                px: 4,
-                bgcolor: 'background.paper',
-                color: 'primary.main',
-                borderRadius: 1,
-                fontWeight: 'bold',
-                textDecoration: 'none',
-                '&:hover': {
-                  bgcolor: 'background.default',
-                },
-              }}
-            >
-              Contact Us
-            </Typography>
-          </Grid>
-        </Grid>
-      </Box>
+      <MultiButtonCTA
+        title="Help Us Make a Difference"
+        description="Your contributions directly support education initiatives and create opportunities for children in need. Join our community of donors and see the impact you can make."
+        buttons={[
+          {
+            text: 'Become a Donor',
+            link: '/donors',
+            primary: true,
+          },
+          {
+            text: 'Contact Us',
+            link: '/contact',
+          },
+        ]}
+      />
     </>
   );
 }

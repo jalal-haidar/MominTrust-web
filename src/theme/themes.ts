@@ -143,8 +143,10 @@ const themes: Record<Themes, ThemeOptions> = {
         main: mominColors.teal.light,
       },
       secondary: {
-        ...mominColors.coral,
-        main: mominColors.coral.light,
+        main: '#FF6B6B', // Bright coral-red that pops in dark mode
+        light: '#FF8787',
+        dark: '#E85555',
+        contrastText: '#FFFFFF',
       },
       background: {
         default: '#121212',

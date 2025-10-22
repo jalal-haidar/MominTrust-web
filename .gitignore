@@ -28,3 +28,8 @@ dist-ssr
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Next.js
+nextjs-app/.next/
+nextjs-app/node_modules/
+nextjs-app/.env*.local

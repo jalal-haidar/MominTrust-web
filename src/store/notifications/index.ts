@@ -1,14 +1,14 @@
-import { useCallback, useMemo } from 'react';
-import { atom, useRecoilState } from 'recoil';
+import { useCallback, useMemo } from "react";
+import { atom, useRecoilState } from "recoil";
 
-import type { SnackbarKey } from 'notistack';
+import type { SnackbarKey } from "notistack";
 
-import { notifications as notificationsDefaults } from '@/config';
+import { notifications as notificationsDefaults } from "@/config";
 
-import { Actions, Notification } from './types';
+import { Actions, Notification } from "./types";
 
 const notificationsState = atom<Notification[]>({
-  key: 'notificationsState',
+  key: "notificationsState",
   default: [],
 });
 
@@ -36,7 +36,7 @@ function useNotifications(): [Notification[], Actions] {
 
       return id;
     },
-    [setNotifications],
+    [setNotifications]
   );
 
   const close = useCallback(
@@ -45,23 +45,26 @@ function useNotifications(): [Notification[], Actions] {
         notifications.map((notification) =>
           dismissAll || notification.options.key === key
             ? { ...notification, dismissed: true }
-            : { ...notification },
-        ),
+            : { ...notification }
+        )
       );
     },
-    [setNotifications],
+    [setNotifications]
   );
 
   const remove = useCallback(
     (key: SnackbarKey) => {
       setNotifications((notifications) =>
-        notifications.filter((notification) => notification.options.key !== key),
+        notifications.filter((notification) => notification.options.key !== key)
       );
     },
-    [setNotifications],
+    [setNotifications]
   );
 
-  const actions = useMemo(() => ({ push, close, remove }), [push, close, remove]);
+  const actions = useMemo(
+    () => ({ push, close, remove }),
+    [push, close, remove]
+  );
 
   return [notifications, actions];
 }

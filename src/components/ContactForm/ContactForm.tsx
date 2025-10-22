@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import MenuItem from '@mui/material/MenuItem';
-import Alert from '@mui/material/Alert';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-import Snackbar from '@mui/material/Snackbar';
+import React, { useState } from "react";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import MenuItem from "@mui/material/MenuItem";
+import Alert from "@mui/material/Alert";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Snackbar from "@mui/material/Snackbar";
 
-import { SectionTitle } from '@/components/styled';
+import { SectionTitle } from "@/components/styled";
 
 type FormData = {
   [key: string]: string | boolean;
@@ -35,7 +35,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
       // Convert FormData to our FormData type
       const formDataObj: FormData = {};
       formData.forEach((value, key) => {
-        formDataObj[key] = typeof value === 'string' ? value : String(value);
+        formDataObj[key] = typeof value === "string" ? value : String(value);
       });
       onFormSubmit(formDataObj);
     }
@@ -52,7 +52,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
         sx={{
           p: { xs: 2, sm: 3, md: 4 },
           borderRadius: 2,
-          height: '100%',
+          height: "100%",
         }}
       >
         <SectionTitle variant="h5" gutterBottom>
@@ -61,12 +61,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
 
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={3}>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <Alert severity="info" sx={{ mb: 1 }}>
                 We aim to respond to all inquiries within 48 hours.
               </Alert>
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 required
                 fullWidth
@@ -76,7 +76,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
                 disabled={formSubmitted}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 required
                 fullWidth
@@ -86,7 +86,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
                 disabled={formSubmitted}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 required
                 fullWidth
@@ -97,7 +97,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
                 disabled={formSubmitted}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 required
                 fullWidth
@@ -107,7 +107,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
                 disabled={formSubmitted}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 required
                 select
@@ -123,11 +123,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
                 <MenuItem value="donation">Donation Information</MenuItem>
                 <MenuItem value="application">Application Support</MenuItem>
                 <MenuItem value="volunteer">Volunteer Opportunities</MenuItem>
-                <MenuItem value="partnership">Partnership/Collaboration</MenuItem>
+                <MenuItem value="partnership">
+                  Partnership/Collaboration
+                </MenuItem>
                 <MenuItem value="other">Other</MenuItem>
               </TextField>
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 required
                 fullWidth
@@ -140,15 +142,20 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
                 disabled={formSubmitted}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <FormControlLabel
                 control={
-                  <Checkbox required color="primary" name="agreeToTerms" disabled={formSubmitted} />
+                  <Checkbox
+                    required
+                    color="primary"
+                    name="agreeToTerms"
+                    disabled={formSubmitted}
+                  />
                 }
                 label="I agree to the Terms of Service and Privacy Policy"
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <Button
                 type="submit"
                 variant="contained"
@@ -158,7 +165,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onFormSubmit }) => {
                 disabled={formSubmitted}
                 sx={{ py: 1.5 }}
               >
-                {formSubmitted ? 'Message Sent' : 'Send Message'}
+                {formSubmitted ? "Message Sent" : "Send Message"}
               </Button>
             </Grid>
           </Grid>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+import { useRouter } from "next/router";
 import {
   IconButton,
   Menu,
@@ -10,7 +11,7 @@ import {
   Typography,
   Box,
   Badge,
-} from '@mui/material';
+} from "@mui/material";
 import {
   AccountCircle as ProfileIcon,
   Favorite as ImpactIcon,
@@ -19,8 +20,7 @@ import {
   Notifications as NotificationsIcon,
   ExitToApp as LogoutIcon,
   EmojiEvents as BadgeIcon,
-} from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
+} from "@mui/icons-material";
 
 interface ProfileMenuProps {
   userName?: string;
@@ -29,12 +29,12 @@ interface ProfileMenuProps {
 }
 
 const ProfileMenu: React.FC<ProfileMenuProps> = ({
-  userName = 'John Donor',
+  userName = "John Donor",
   userAvatar,
   currentStreak = 8,
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const navigate = useNavigate();
+  const router = useRouter();
   const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -47,14 +47,14 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({
 
   const handleMenuItemClick = (path: string) => {
     handleClose();
-    navigate(path);
+    router.push(path);
   };
 
   const getInitials = (name: string) => {
     return name
-      .split(' ')
+      .split(" ")
       .map((n) => n[0])
-      .join('')
+      .join("")
       .toUpperCase();
   };
 
@@ -64,21 +64,21 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({
         onClick={handleClick}
         size="small"
         sx={{ ml: 2 }}
-        aria-controls={open ? 'profile-menu' : undefined}
+        aria-controls={open ? "profile-menu" : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        aria-expanded={open ? "true" : undefined}
       >
         <Badge
           badgeContent={currentStreak}
           color="error"
           overlap="circular"
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'right',
+            vertical: "bottom",
+            horizontal: "right",
           }}
           sx={{
-            '& .MuiBadge-badge': {
-              fontSize: '0.65rem',
+            "& .MuiBadge-badge": {
+              fontSize: "0.65rem",
               height: 18,
               minWidth: 18,
             },
@@ -90,8 +90,8 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({
             sx={{
               width: 36,
               height: 36,
-              bgcolor: 'primary.main',
-              fontSize: '0.9rem',
+              bgcolor: "primary.main",
+              fontSize: "0.9rem",
             }}
           >
             {!userAvatar && getInitials(userName)}
@@ -105,26 +105,26 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         PaperProps={{
           elevation: 3,
           sx: {
             minWidth: 280,
             mt: 1.5,
             borderRadius: 2,
-            overflow: 'visible',
-            filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.12))',
-            '&:before': {
+            overflow: "visible",
+            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.12))",
+            "&:before": {
               content: '""',
-              display: 'block',
-              position: 'absolute',
+              display: "block",
+              position: "absolute",
               top: 0,
               right: 14,
               width: 10,
               height: 10,
-              bgcolor: 'background.paper',
-              transform: 'translateY(-50%) rotate(45deg)',
+              bgcolor: "background.paper",
+              transform: "translateY(-50%) rotate(45deg)",
               zIndex: 0,
             },
           },
@@ -135,8 +135,8 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({
           <Typography variant="subtitle1" fontWeight="bold">
             {userName}
           </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5 }}>
-            <BadgeIcon sx={{ fontSize: 16, color: 'warning.main' }} />
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 0.5 }}>
+            <BadgeIcon sx={{ fontSize: 16, color: "warning.main" }} />
             <Typography variant="caption" color="text.secondary">
               {currentStreak} month streak
             </Typography>
@@ -146,14 +146,14 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({
         <Divider />
 
         {/* Menu Items */}
-        <MenuItem onClick={() => handleMenuItemClick('/profile')}>
+        <MenuItem onClick={() => handleMenuItemClick("/profile")}>
           <ListItemIcon>
             <ProfileIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText>My Profile</ListItemText>
         </MenuItem>
 
-        <MenuItem onClick={() => handleMenuItemClick('/your-impact')}>
+        <MenuItem onClick={() => handleMenuItemClick("/your-impact")}>
           <ListItemIcon>
             <ImpactIcon fontSize="small" color="error" />
           </ListItemIcon>
@@ -164,14 +164,14 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({
           </ListItemText>
         </MenuItem>
 
-        <MenuItem onClick={() => handleMenuItemClick('/donations')}>
+        <MenuItem onClick={() => handleMenuItemClick("/donations")}>
           <ListItemIcon>
             <ReceiptIcon fontSize="small" />
           </ListItemIcon>
           <ListItemText>Donation History</ListItemText>
         </MenuItem>
 
-        <MenuItem onClick={() => handleMenuItemClick('/notifications')}>
+        <MenuItem onClick={() => handleMenuItemClick("/notifications")}>
           <ListItemIcon>
             <Badge badgeContent={3} color="error">
               <NotificationsIcon fontSize="small" />
@@ -182,7 +182,7 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({
 
         <Divider />
 
-        <MenuItem onClick={() => handleMenuItemClick('/settings')}>
+        <MenuItem onClick={() => handleMenuItemClick("/settings")}>
           <ListItemIcon>
             <SettingsIcon fontSize="small" />
           </ListItemIcon>

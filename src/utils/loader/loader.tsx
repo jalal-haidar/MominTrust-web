@@ -1,8 +1,8 @@
-import { FC, Suspense, lazy, useEffect, useState } from 'react';
+import { FC, Suspense, lazy, useEffect, useState } from "react";
 
-import sleep from '@/utils/sleep';
+import sleep from "@/utils/sleep";
 
-import { AnyProps, LoadComponent, LoaderDefaultOptions } from './types';
+import { AnyProps, LoadComponent, LoaderDefaultOptions } from "./types";
 
 // a little bit complex staff is going on here
 // let me explain it
@@ -52,7 +52,10 @@ function getDelayedFallback(Fallback: FC, delay: number) {
 // The solution of the second problem is to set of a minimum timeout, which will
 // ensure that the fallback component will be rendered for that minimum amount of time
 
-const getLazyComponent = (loadComponent: LoadComponent, loaderOptions: LoaderDefaultOptions) =>
+const getLazyComponent = (
+  loadComponent: LoadComponent,
+  loaderOptions: LoaderDefaultOptions
+) =>
   lazy(() => {
     // fix the moment of starting loading
     const start = performance.now();
@@ -105,7 +108,7 @@ function asyncComponentLoader(
   loadComponent: LoadComponent,
   additionalProps: AnyProps,
   loaderOptions: LoaderDefaultOptions,
-  FallbackWaiting: FC,
+  FallbackWaiting: FC
 ) {
   const Fallback = loaderOptions.delay
     ? getDelayedFallback(FallbackWaiting, loaderOptions.delay)

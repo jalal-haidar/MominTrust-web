@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
 import withPWA from "next-pwa";
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
+const bundleAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig = {
   reactStrictMode: true,
@@ -16,6 +21,21 @@ const nextConfig = {
     unoptimized: false,
   },
 
+  // Performance optimizations
+  modularizeImports: {
+    '@mui/material': {
+      transform: '@mui/material/{{member}}',
+    },
+    '@mui/icons-material': {
+      transform: '@mui/icons-material/{{member}}',
+    },
+  },
+
+  // Experimental features for better performance
+  experimental: {
+    optimizePackageImports: ['@mui/material', '@mui/icons-material', 'recoil'],
+  },
+
   // Webpack configuration
   webpack: (config, { isServer }) => {
     if (!isServer) {
@@ -24,6 +44,17 @@ const nextConfig = {
         fs: false,
       };
     }
+    
+    // Reduce build time in development
+    if (process.env.NODE_ENV === 'development') {
+      config.optimization = {
+        ...config.optimization,
+        removeAvailableModules: false,
+        removeEmptyChunks: false,
+        splitChunks: false,
+      };
+    }
+    
     return config;
   },
 };
@@ -36,4 +67,4 @@ const pwaConfig = withPWA({
   buildExcludes: [/middleware-manifest\.json$/],
 });
 
-export default pwaConfig(nextConfig);
+export default bundleAnalyzer(pwaConfig(nextConfig));

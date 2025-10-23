@@ -29,10 +29,10 @@ type ContactInfoProps = {
 };
 
 const defaultAddress = {
-  street1: '123 Education Drive',
-  street2: 'Suite 456',
-  city: 'New York',
-  state: 'NY',
+  street1: 'Iqbal Market, Main Bazar Thandkoi',
+  street2: '',
+  city: 'Swabi',
+  state: 'Khyber Pakhtunkhwa',
   zip: '10001',
 };
 
@@ -42,8 +42,8 @@ const defaultEmail = {
 };
 
 const defaultPhone = {
-  number: '+1 (555) 123-4567',
-  hours: 'Mon-Fri: 9:00 AM - 5:00 PM EST',
+  number: '+92 325 1595334)',
+  hours: 'Mon-Fri: 9:00 AM - 5:00 PM PST',
 };
 
 const ContactInfo: React.FC<ContactInfoProps> = ({

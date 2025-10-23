@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import type { SvgIconProps } from "@mui/material/SvgIcon";
+import type { SvgIconProps } from '@mui/material/SvgIcon';
 
 enum Pages {
   Welcome,
@@ -17,9 +17,10 @@ type RouteCustomProps = {
   title?: string;
   path: string;
   icon?: FC<SvgIconProps>;
+  disabled?: boolean;
 };
 
 type Routes = Record<Pages, RouteCustomProps>;
 
-export type { Routes };
+export type { Routes, RouteCustomProps };
 export { Pages };

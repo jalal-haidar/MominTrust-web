@@ -1,52 +1,82 @@
-import HomeIcon from "@mui/icons-material/Home";
-import InfoIcon from "@mui/icons-material/Info";
-import ContactMailIcon from "@mui/icons-material/ContactMail";
-import AddTaskIcon from "@mui/icons-material/AddTask";
-import BugReportIcon from "@mui/icons-material/BugReport";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import TerrainIcon from "@mui/icons-material/Terrain";
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import PeopleIcon from '@mui/icons-material/People';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import HandshakeIcon from '@mui/icons-material/Handshake';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
-import { Pages, Routes } from "./types";
+import { Pages, Routes } from './types';
 
 const routes: Routes = {
   [Pages.Welcome]: {
-    path: "/",
-    title: "Home",
+    path: '/',
+    title: 'Momin Trust',
     icon: HomeIcon,
   },
   [Pages.About]: {
-    path: "/about",
-    title: "About Us",
+    path: '/about',
+    title: 'About',
     icon: InfoIcon,
   },
   [Pages.Contact]: {
-    path: "/contact",
-    title: "Contact",
+    path: '/contact',
+    title: 'Contact',
     icon: ContactMailIcon,
   },
+  // Coming Soon - Disabled MVP pages
   [Pages.Page1]: {
-    path: "/page-1",
-    title: "Page 1",
-    icon: GitHubIcon,
+    path: '#',
+    title: 'Beneficiaries',
+    icon: PeopleIcon,
+    disabled: true,
   },
   [Pages.Page2]: {
-    path: "/page-2",
-    title: "Page 2",
-    icon: AddTaskIcon,
+    path: '#',
+    title: 'Donors',
+    icon: VolunteerActivismIcon,
+    disabled: true,
   },
   [Pages.Page3]: {
-    path: "/page-3",
-    title: "Page 3",
-    icon: TerrainIcon,
+    path: '#',
+    title: 'Impact',
+    icon: TrendingUpIcon,
+    disabled: true,
   },
   [Pages.Page4]: {
-    path: "/page-4",
-    title: "Page 4",
-    icon: BugReportIcon,
+    path: '#',
+    title: 'Partners',
+    icon: HandshakeIcon,
+    disabled: true,
   },
   [Pages.NotFound]: {
-    path: "/404",
+    path: '/404',
   },
 };
+
+// Additional routes for sidebar only (not in main routing)
+export const additionalNavItems = [
+  {
+    path: '#',
+    title: 'Apply',
+    icon: AssignmentIcon,
+    disabled: true,
+  },
+  {
+    path: '#',
+    title: 'Analytics',
+    icon: BarChartIcon,
+    disabled: true,
+  },
+  {
+    path: '#',
+    title: 'Your Impact',
+    icon: FavoriteIcon,
+    disabled: true,
+  },
+];
 
 export default routes;

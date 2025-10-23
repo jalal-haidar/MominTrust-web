@@ -1,21 +1,22 @@
-import { Fragment } from "react";
-import type { AppProps } from "next/app";
-import Head from "next/head";
-import { CacheProvider, EmotionCache } from "@emotion/react";
-import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
-import { RecoilRoot } from "recoil";
-import { HelmetProvider } from "react-helmet-async";
-import createEmotionCache from "@/utils/createEmotionCache";
-import CustomThemeProvider from "@/theme/Provider";
-import Header from "@/sections/Header";
-import Sidebar from "@/sections/Sidebar";
-import Notifications from "@/sections/Notifications";
-import HotKeys from "@/sections/HotKeys";
-import SW from "@/sections/SW";
-import { withErrorHandler } from "@/error-handling";
-import AppErrorBoundaryFallback from "@/error-handling/fallbacks/App";
-import { getPageHeight } from "@/utils/page-height";
+import { Fragment } from 'react';
+import type { AppProps } from 'next/app';
+import Head from 'next/head';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import { RecoilRoot } from 'recoil';
+import { HelmetProvider } from 'react-helmet-async';
+import createEmotionCache from '@/utils/createEmotionCache';
+import CustomThemeProvider from '@/theme/Provider';
+import Header from '@/sections/Header';
+import Sidebar from '@/sections/Sidebar';
+import MobileNavigation from '@/components/MobileNavigation';
+import Notifications from '@/sections/Notifications';
+import HotKeys from '@/sections/HotKeys';
+import SW from '@/sections/SW';
+import { withErrorHandler } from '@/error-handling';
+import AppErrorBoundaryFallback from '@/error-handling/fallbacks/App';
+import { getPageHeight } from '@/utils/page-height';
 
 // Client-side cache, shared for the whole session
 const clientSideEmotionCache = createEmotionCache();
@@ -43,6 +44,7 @@ function MyApp(props: MyAppProps) {
                 <SW />
                 <Header />
                 <Sidebar />
+                <MobileNavigation />
                 <Box sx={{ height: (theme) => getPageHeight(theme) }}>
                   <Component {...pageProps} />
                 </Box>

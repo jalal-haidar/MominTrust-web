@@ -1,4 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import DefaultIcon from '@mui/icons-material/Deblur';
 import Box from '@mui/material/Box';
@@ -10,33 +11,32 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import Typography from '@mui/material/Typography';
+import Tooltip from '@mui/material/Tooltip';
 import { alpha, useTheme } from '@mui/material/styles';
 
-import routes from '@/routes';
+import routes, { additionalNavItems } from '@/routes';
 import useSidebar from '@/store/sidebar';
 
 function Sidebar() {
   const [isSidebarOpen, sidebarActions] = useSidebar();
-  const location = useLocation();
+  const router = useRouter();
   const theme = useTheme();
 
-  // Group routes by category
+  // Group routes
+  const homeRoute = Object.values(routes).find((route) => route.path === '/');
   const mainRoutes = Object.values(routes).filter(
     (route) =>
       route.title &&
-      [
-        '/beneficiaries',
-        '/donors',
-        '/impact',
-        '/analytics',
-        '/your-impact',
-        '/partners',
-        '/apply',
-        '/about',
-      ].includes(route.path as string),
+      route.path !== '/' &&
+      route.path !== '/404' &&
+      route.path !== '/about' &&
+      route.path !== '/contact',
+  );
+  const implementedRoutes = Object.values(routes).filter(
+    (route) => route.title && (route.path === '/about' || route.path === '/contact'),
   );
 
-  const homeRoute = Object.values(routes).find((route) => route.path === '/');
+  const allMainNavItems = [...implementedRoutes, ...mainRoutes];
 
   return (
     <SwipeableDrawer
@@ -86,13 +86,13 @@ function Sidebar() {
             <ListItem disablePadding sx={{ mb: 1 }}>
               <ListItemButton
                 component={Link}
-                to={homeRoute.path as string}
+                href={homeRoute.path as string}
                 onClick={sidebarActions.close}
-                selected={location.pathname === homeRoute.path}
+                selected={router.pathname === homeRoute.path}
                 sx={{
                   borderRadius: 2,
                   backgroundColor:
-                    location.pathname === homeRoute.path
+                    router.pathname === homeRoute.path
                       ? alpha(theme.palette.primary.main, 0.1)
                       : 'transparent',
                   '&:hover': {
@@ -102,7 +102,7 @@ function Sidebar() {
               >
                 <ListItemIcon
                   sx={{
-                    color: location.pathname === homeRoute.path ? 'primary.main' : 'text.secondary',
+                    color: router.pathname === homeRoute.path ? 'primary.main' : 'text.secondary',
                     minWidth: 40,
                   }}
                 >
@@ -111,8 +111,8 @@ function Sidebar() {
                 <ListItemText
                   primary={homeRoute.title}
                   primaryTypographyProps={{
-                    fontWeight: location.pathname === homeRoute.path ? 700 : 400,
-                    color: location.pathname === homeRoute.path ? 'primary.main' : 'text.primary',
+                    fontWeight: router.pathname === homeRoute.path ? 700 : 400,
+                    color: router.pathname === homeRoute.path ? 'primary.main' : 'text.primary',
                   }}
                 />
               </ListItemButton>
@@ -128,27 +128,33 @@ function Sidebar() {
         </Typography>
 
         <List sx={{ px: 2, flex: 1 }}>
-          {mainRoutes.map(({ path, title, icon: Icon }) => (
-            <ListItem disablePadding sx={{ mb: 1 }} key={path}>
+          {allMainNavItems.map(({ path, title, icon: Icon, disabled }) => {
+            const button = (
               <ListItemButton
-                component={Link}
-                to={path as string}
-                onClick={sidebarActions.close}
-                selected={location.pathname === path}
+                component={disabled ? 'div' : Link}
+                href={disabled ? undefined : (path as string)}
+                onClick={disabled ? undefined : sidebarActions.close}
+                selected={!disabled && router.pathname === path}
+                disabled={disabled}
                 sx={{
                   borderRadius: 2,
                   backgroundColor:
-                    location.pathname === path
+                    !disabled && router.pathname === path
                       ? alpha(theme.palette.primary.main, 0.1)
                       : 'transparent',
+                  opacity: disabled ? 0.5 : 1,
+                  cursor: disabled ? 'not-allowed' : 'pointer',
                   '&:hover': {
-                    backgroundColor: alpha(theme.palette.primary.main, 0.08),
+                    backgroundColor: disabled
+                      ? 'transparent'
+                      : alpha(theme.palette.primary.main, 0.08),
                   },
                 }}
               >
                 <ListItemIcon
                   sx={{
-                    color: location.pathname === path ? 'primary.main' : 'text.secondary',
+                    color:
+                      !disabled && router.pathname === path ? 'primary.main' : 'text.secondary',
                     minWidth: 40,
                   }}
                 >
@@ -157,13 +163,70 @@ function Sidebar() {
                 <ListItemText
                   primary={title}
                   primaryTypographyProps={{
-                    fontWeight: location.pathname === path ? 600 : 400,
-                    color: location.pathname === path ? 'primary.main' : 'text.primary',
+                    fontWeight: !disabled && router.pathname === path ? 600 : 400,
+                    color: !disabled && router.pathname === path ? 'primary.main' : 'text.primary',
                   }}
                 />
               </ListItemButton>
-            </ListItem>
-          ))}
+            );
+
+            return (
+              <ListItem disablePadding sx={{ mb: 1 }} key={path}>
+                {disabled ? (
+                  <Tooltip title="Coming Soon" placement="right" arrow>
+                    {button}
+                  </Tooltip>
+                ) : (
+                  button
+                )}
+              </ListItem>
+            );
+          })}
+          {additionalNavItems.map(({ path, title, icon: Icon, disabled }) => {
+            const button = (
+              <ListItemButton
+                disabled={disabled}
+                sx={{
+                  borderRadius: 2,
+                  opacity: disabled ? 0.5 : 1,
+                  cursor: disabled ? 'not-allowed' : 'pointer',
+                  '&:hover': {
+                    backgroundColor: disabled
+                      ? 'transparent'
+                      : alpha(theme.palette.primary.main, 0.08),
+                  },
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    color: 'text.secondary',
+                    minWidth: 40,
+                  }}
+                >
+                  {Icon ? <Icon /> : <DefaultIcon />}
+                </ListItemIcon>
+                <ListItemText
+                  primary={title}
+                  primaryTypographyProps={{
+                    fontWeight: 400,
+                    color: 'text.primary',
+                  }}
+                />
+              </ListItemButton>
+            );
+
+            return (
+              <ListItem disablePadding sx={{ mb: 1 }} key={title}>
+                {disabled ? (
+                  <Tooltip title="Coming Soon" placement="right" arrow>
+                    {button}
+                  </Tooltip>
+                ) : (
+                  button
+                )}
+              </ListItem>
+            );
+          })}
         </List>
 
         <Divider sx={{ my: 1 }} />

@@ -2,10 +2,30 @@ import { Grid, Card, CardContent, Typography, Box, useTheme } from '@mui/materia
 import { School, People, AttachMoney, TrendingUp } from '@mui/icons-material';
 
 const metrics = [
-  { id: 'm1', label: 'Children Supported', value: '1,247', icon: <People fontSize="large" /> },
-  { id: 'm2', label: 'Schools Reached', value: '85', icon: <School fontSize="large" /> },
-  { id: 'm3', label: 'Funds Raised', value: '$2.3M', icon: <AttachMoney fontSize="large" /> },
-  { id: 'm4', label: 'Success Rate', value: '94%', icon: <TrendingUp fontSize="large" /> },
+  {
+    id: 'm1',
+    label: 'Children Supported',
+    value: '7',
+    icon: <People fontSize="large" />,
+  },
+  {
+    id: 'm2',
+    label: 'Schools Reached',
+    value: '1',
+    icon: <School fontSize="large" />,
+  },
+  {
+    id: 'm3',
+    label: 'Funds Raised',
+    value: '100k',
+    icon: <AttachMoney fontSize="large" />,
+  },
+  {
+    id: 'm4',
+    label: 'Success Rate',
+    value: '94%',
+    icon: <TrendingUp fontSize="large" />,
+  },
 ];
 
 // Add useEffect to simulate counter animation
@@ -100,7 +120,13 @@ const MetricCard = ({
         />
 
         <Box
-          sx={{ display: 'flex', alignItems: 'center', gap: 2, position: 'relative', zIndex: 1 }}
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 2,
+            position: 'relative',
+            zIndex: 1,
+          }}
         >
           <Box
             sx={{
@@ -252,16 +278,13 @@ const ImpactMetrics = () => {
           {metrics.map((m, index) => (
             <Grid
               key={m.id}
-              item
-              xs={12}
-              sm={6}
-              md={3}
+              size={{ xs: 12, sm: 6, md: 3 }}
               sx={{
                 transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
                 opacity: isVisible ? 1 : 0,
-                transition: `transform 0.7s ease-out ${index * 0.1}s, opacity 0.7s ease-out ${
+                transition: `transform 0.7s ease-out ${
                   index * 0.1
-                }s`,
+                }s, opacity 0.7s ease-out ${index * 0.1}s`,
               }}
             >
               <MetricCard title={m.label} value={m.value} icon={m.icon} />

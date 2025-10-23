@@ -1,53 +1,40 @@
 import React, { useState } from 'react';
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Paper,
-  SpeedDial,
-  SpeedDialAction,
-  SpeedDialIcon,
-  useTheme,
-  useMediaQuery,
-} from '@mui/material';
-import {
-  Home as HomeIcon,
-  People as PeopleIcon,
-  VolunteerActivism as DonateIcon,
-  BarChart as AnalyticsIcon,
-  ContactMail as ContactIcon,
-  Info as InfoIcon,
-  Assignment as ApplyIcon,
-} from '@mui/icons-material';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import Paper from '@mui/material/Paper';
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialAction from '@mui/material/SpeedDialAction';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import HomeIcon from '@mui/icons-material/Home';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import InfoIcon from '@mui/icons-material/Info';
 
 const MobileNavigation = () => {
   const theme = useTheme();
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [speedDialOpen, setSpeedDialOpen] = useState(false);
 
-  // Main navigation items for bottom navigation
+  // Main navigation items for bottom navigation (MVP pages only)
   const mainNavItems = [
     { label: 'Home', value: '/', icon: <HomeIcon /> },
-    { label: 'Beneficiaries', value: '/beneficiaries', icon: <PeopleIcon /> },
-    { label: 'Impact', value: '/impact', icon: <AnalyticsIcon /> },
-    { label: 'Donors', value: '/donors', icon: <DonateIcon /> },
+    { label: 'About', value: '/about', icon: <InfoIcon /> },
+    { label: 'Contact', value: '/contact', icon: <ContactMailIcon /> },
   ];
 
   // Secondary actions for speed dial
-  const speedDialActions = [
-    { icon: <ApplyIcon />, name: 'Apply', path: '/apply' },
-    { icon: <ContactIcon />, name: 'Contact', path: '/contact' },
-    { icon: <InfoIcon />, name: 'About', path: '/about' },
-  ];
+  const speedDialActions = [{ icon: <VolunteerActivismIcon />, name: 'Donate', path: '/donate' }];
 
   const handleNavChange = (event: React.SyntheticEvent, newValue: string) => {
-    navigate(newValue);
+    router.push(newValue);
   };
 
   const handleSpeedDialAction = (path: string) => {
-    navigate(path);
+    router.push(path);
     setSpeedDialOpen(false);
   };
 
@@ -68,7 +55,7 @@ const MobileNavigation = () => {
         elevation={8}
       >
         <BottomNavigation
-          value={location.pathname}
+          value={router.pathname}
           onChange={handleNavChange}
           sx={{
             height: 70,
@@ -141,15 +128,13 @@ const MobileNavigation = () => {
       </SpeedDial>
 
       {/* Add bottom padding to main content to account for fixed navigation */}
-      <style>
-        {`
-          @media (max-width: ${theme.breakpoints.values.md}px) {
-            body {
-              padding-bottom: 85px;
-            }
+      <style jsx global>{`
+        @media (max-width: ${theme.breakpoints.values.md}px) {
+          body {
+            padding-bottom: 85px;
           }
-        `}
-      </style>
+        }
+      `}</style>
     </>
   );
 };

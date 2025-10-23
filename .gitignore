@@ -13,6 +13,7 @@ dev-dist
 dist-ssr
 *.local
 .env
+.env*.local
 
 # Editor directories and files
 .vscode/*
@@ -28,3 +29,12 @@ dist-ssr
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Next.js (now at root)
+.next/
+out/
+
+# Vite app (legacy - for migration reference)
+vite-app/node_modules/
+vite-app/dist/
+vite-app/.env*.local

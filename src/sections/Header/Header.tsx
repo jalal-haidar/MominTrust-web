@@ -1,4 +1,4 @@
-import React from 'react';
+import Link from 'next/link';
 import ThemeIcon from '@mui/icons-material/InvertColors';
 import MenuIcon from '@mui/icons-material/Menu';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -14,7 +14,6 @@ import { FlexBox } from '@/components/styled';
 import { title } from '@/config';
 import useSidebar from '@/store/sidebar';
 import useTheme from '@/store/theme';
-import ProfileMenu from '@/components/ProfileMenu';
 
 import { StyledAppBar, DonateButton, NavLink } from './styled';
 
@@ -28,16 +27,10 @@ function Header() {
     threshold: 0,
   });
 
-  // Navigation items for the organization
+  // Navigation items for the organization (MVP - core pages only)
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'About Us', path: '/about' },
-    { name: 'Beneficiaries', path: '/beneficiaries' },
-    { name: 'Our Impact', path: '/impact' },
-    { name: 'Analytics', path: '/analytics' },
-    { name: 'Partners', path: '/partners' },
-    { name: 'Donors', path: '/donors' },
-    { name: 'Apply', path: '/apply' },
+    { name: 'About', path: '/about' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -94,20 +87,16 @@ function Header() {
 
             {/* Desktop Navigation Links */}
             <Box
-              sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}
+              sx={{
+                flexGrow: 1,
+                display: { xs: 'none', md: 'flex' },
+                justifyContent: 'center',
+              }}
             >
               {navItems.map((item) => (
-                <NavLink
-                  key={item.name}
-                  href={item.path}
-                  color="inherit"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = item.path;
-                  }}
-                >
-                  {item.name}
-                </NavLink>
+                <Link key={item.name} href={item.path} passHref legacyBehavior>
+                  <NavLink color="inherit">{item.name}</NavLink>
+                </Link>
               ))}
             </Box>
 
@@ -116,22 +105,19 @@ function Header() {
             {/* Right-side Actions */}
             <FlexBox>
               {/* Donate Button */}
-              <DonateButton
-                href="/donors"
-                variant="contained"
-                color="secondary"
-                startIcon={<FavoriteIcon />}
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = '/donors';
-                }}
-                sx={{
-                  display: { xs: 'none', sm: 'flex' },
-                  mr: 2,
-                }}
-              >
-                Donate Now
-              </DonateButton>
+              <Link href="/donors" passHref legacyBehavior>
+                <DonateButton
+                  variant="contained"
+                  color="secondary"
+                  startIcon={<FavoriteIcon />}
+                  sx={{
+                    display: { xs: 'none', sm: 'flex' },
+                    mr: 2,
+                  }}
+                >
+                  Donate Now
+                </DonateButton>
+              </Link>
 
               {/* Theme Toggle */}
               <Tooltip title="Switch theme" arrow>
@@ -151,8 +137,8 @@ function Header() {
                 </IconButton>
               </Tooltip>
 
-              {/* Profile Menu */}
-              <ProfileMenu userName="John Donor" currentStreak={8} />
+              {/* Profile Menu - Commented out for MVP */}
+              {/* <ProfileMenu userName="John Donor" currentStreak={8} /> */}
 
               {/* Removed redundant mobile menu toggle */}
             </FlexBox>

@@ -8,14 +8,21 @@ import type { Actions } from './types';
 
 const themeModeState = atom({
   key: 'theme-mode-state',
-  default: 'dark' as Themes,
-  effects: [synchronizeWithLocalStorage],
+  default: 'light' as Themes,
+  effects_UNSTABLE: [synchronizeWithLocalStorage],
 });
 
 function synchronizeWithLocalStorage({ setSelf, onSet }: AtomEffectParams) {
+  // Only run on client side
+  if (globalThis.window === undefined) return;
+
   const storedTheme = localStorage.getItem('theme-mode');
-  storedTheme && setSelf(storedTheme);
-  onSet((value: Themes) => localStorage.setItem('theme-mode', value));
+  if (storedTheme) {
+    setSelf(storedTheme);
+  }
+  onSet((value: Themes) => {
+    localStorage.setItem('theme-mode', value);
+  });
 }
 
 function useTheme(): [Themes, Actions] {

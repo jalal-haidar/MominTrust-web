@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { ComponentType } from 'react';
+import { ComponentType } from "react";
 
 type LoaderDefaultOptions = {
   delay: number;

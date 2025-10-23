@@ -1,4 +1,5 @@
-import { Box, Button, Container, Typography, useTheme, Grid, Paper, Avatar } from '@mui/material';
+import { Box, Button, Container, Typography, useTheme, Paper, Avatar, Grid } from '@mui/material';
+
 import SchoolIcon from '@mui/icons-material/School';
 import PeopleIcon from '@mui/icons-material/People';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -9,7 +10,7 @@ const Hero = () => {
   // Stats to display in hero section
   const stats = [
     {
-      value: '250+',
+      value: '5+',
       label: 'Students Supported',
       icon: SchoolIcon,
       color: theme.palette.primary.main,
@@ -20,7 +21,7 @@ const Hero = () => {
       icon: TrendingUpIcon,
       color: theme.palette.secondary.main,
     },
-    { value: '5', label: 'Years of Impact', icon: PeopleIcon, color: theme.palette.primary.light },
+    { value: '1', label: 'Years of Impact', icon: PeopleIcon, color: theme.palette.primary.light },
   ];
 
   return (
@@ -224,7 +225,10 @@ const Hero = () => {
                   '&:hover': {
                     borderColor: 'white',
                     backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                    transform: { xs: 'translateY(-1px)', md: 'translateY(-2px)' }, // Smaller transform on mobile
+                    transform: {
+                      xs: 'translateY(-1px)',
+                      md: 'translateY(-2px)',
+                    }, // Smaller transform on mobile
                   },
                   transition: 'all 0.2s',
                   // Improve tap target for mobile
@@ -245,6 +249,7 @@ const Hero = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 position: 'relative',
+                width: '100%',
                 py: { xs: 2, md: 4 },
                 mt: { xs: -2, md: 0 }, // Reduce top margin on mobile
                 mb: { xs: -1, md: 0 }, // Reduce bottom margin on mobile
@@ -255,8 +260,8 @@ const Hero = () => {
                 sx={{
                   position: 'relative',
                   width: '100%',
-                  height: { xs: 240, sm: 280, md: 320 }, // Reduced height on mobile
-                  maxWidth: { xs: 300, sm: 420, md: 520 }, // Reduced max width on mobile
+                  height: { xs: 240, sm: 280, md: 320 },
+                  maxWidth: { xs: 300, sm: 420, md: 520 },
                   mx: 'auto',
                   perspective: '1000px',
                   transformStyle: 'preserve-3d',
@@ -312,11 +317,11 @@ const Hero = () => {
                 <Box
                   sx={{
                     position: 'absolute',
-                    top: { xs: '15%', sm: '18%', md: '20%' }, // Adjusted for mobile
+                    top: { xs: '15%', sm: '18%', md: '20%' },
                     left: '50%',
                     transform: 'translateX(-50%)',
-                    width: { xs: 140, sm: 160, md: 180 }, // Smaller on mobile
-                    height: { xs: 140, sm: 160, md: 180 }, // Smaller on mobile
+                    width: { xs: 140, sm: 160, md: 180 },
+                    height: { xs: 140, sm: 160, md: 180 },
                     borderRadius: '50%',
                     background: `linear-gradient(135deg, ${theme.palette.secondary.light}, ${theme.palette.secondary.main})`,
                     display: 'flex',
@@ -327,7 +332,7 @@ const Hero = () => {
                     border: {
                       xs: '4px solid rgba(255, 255, 255, 0.3)',
                       md: '6px solid rgba(255, 255, 255, 0.3)',
-                    }, // Thinner border on mobile
+                    },
                     zIndex: 3,
                     transition: 'all 0.3s ease',
                     '&:hover': {
@@ -353,10 +358,10 @@ const Hero = () => {
                 <Box
                   sx={{
                     position: 'absolute',
-                    bottom: { xs: '15%', md: '10%' }, // Adjusted position on mobile
-                    right: { xs: '10%', sm: '12%' }, // Adjusted position on mobile
-                    width: { xs: 110, sm: 120, md: 140 }, // Smaller on mobile
-                    height: { xs: 110, sm: 120, md: 140 }, // Smaller on mobile
+                    bottom: { xs: '15%', md: '10%' },
+                    right: { xs: '10%', sm: '12%' },
+                    width: { xs: 110, sm: 120, md: 140 },
+                    height: { xs: 110, sm: 120, md: 140 },
                     borderRadius: '50%',
                     background: 'rgba(255, 255, 255, 0.95)',
                     color: theme.palette.primary.main,
@@ -369,15 +374,21 @@ const Hero = () => {
                     transition: 'all 0.3s ease',
                     animation: 'pulse 3s infinite',
                     '@keyframes pulse': {
-                      '0%': { boxShadow: `0 0 0 0 ${theme.palette.primary.main}40` },
-                      '70%': { boxShadow: `0 0 0 10px ${theme.palette.primary.main}00` },
-                      '100%': { boxShadow: `0 0 0 0 ${theme.palette.primary.main}00` },
+                      '0%': {
+                        boxShadow: `0 0 0 0 ${theme.palette.primary.main}40`,
+                      },
+                      '70%': {
+                        boxShadow: `0 0 0 10px ${theme.palette.primary.main}00`,
+                      },
+                      '100%': {
+                        boxShadow: `0 0 0 0 ${theme.palette.primary.main}00`,
+                      },
                     },
                   }}
                 >
                   <SchoolIcon
                     sx={{
-                      fontSize: { xs: 45, sm: 50, md: 60 }, // Smaller icon on mobile
+                      fontSize: { xs: 45, sm: 50, md: 60 },
                       color: theme.palette.primary.main,
                       filter: 'drop-shadow(1px 1px 1px rgba(0,0,0,0.2))',
                     }}
@@ -444,12 +455,12 @@ const Hero = () => {
           }}
         >
           <Grid container spacing={3} sx={{ pt: 1 }}>
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <Grid
                 item
                 xs={12}
                 md={4}
-                key={index}
+                key={stat.label}
                 sx={{
                   position: 'relative',
                   '&:not(:last-child)': {
@@ -499,7 +510,7 @@ const Hero = () => {
                       },
                     }}
                   >
-                    <stat.icon fontSize={window.innerWidth < 600 ? 'medium' : 'large'} />
+                    <stat.icon sx={{ fontSize: { xs: 'medium', md: 'large' } }} />
                   </Avatar>
                   <Typography
                     variant="h3"

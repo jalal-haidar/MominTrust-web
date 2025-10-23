@@ -1,4 +1,5 @@
-import { Box, Button, Container, Typography, useTheme, Grid, Paper, Avatar } from '@mui/material';
+import { Box, Button, Container, Typography, useTheme, Paper, Avatar, Grid } from '@mui/material';
+
 import SchoolIcon from '@mui/icons-material/School';
 import PeopleIcon from '@mui/icons-material/People';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -454,10 +455,12 @@ const Hero = () => {
           }}
         >
           <Grid container spacing={3} sx={{ pt: 1 }}>
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <Grid
-                size={{ xs: 12, md: 4 }}
-                key={index}
+                item
+                xs={12}
+                md={4}
+                key={stat.label}
                 sx={{
                   position: 'relative',
                   '&:not(:last-child)': {

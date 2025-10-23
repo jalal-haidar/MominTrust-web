@@ -13,7 +13,7 @@ import Sidebar from '@/sections/Sidebar';
 import MobileNavigation from '@/components/MobileNavigation';
 import Notifications from '@/sections/Notifications';
 import HotKeys from '@/sections/HotKeys';
-import SW from '@/sections/SW';
+import ServiceWorker from '@/sections/SW';
 import { withErrorHandler } from '@/error-handling';
 import AppErrorBoundaryFallback from '@/error-handling/fallbacks/App';
 import { getPageHeight } from '@/utils/page-height';
@@ -22,10 +22,10 @@ import { getPageHeight } from '@/utils/page-height';
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
+  readonly emotionCache?: EmotionCache;
 }
 
-function MyApp(props: MyAppProps) {
+function MyApp(props: Readonly<MyAppProps>) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
@@ -41,7 +41,7 @@ function MyApp(props: MyAppProps) {
               <CssBaseline />
               <Notifications>
                 <HotKeys />
-                <SW />
+                <ServiceWorker />
                 <Header />
                 <Sidebar />
                 <MobileNavigation />

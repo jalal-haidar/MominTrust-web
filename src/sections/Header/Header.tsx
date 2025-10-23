@@ -14,7 +14,6 @@ import { FlexBox } from '@/components/styled';
 import { title } from '@/config';
 import useSidebar from '@/store/sidebar';
 import useTheme from '@/store/theme';
-// import ProfileMenu from "@/components/ProfileMenu"; // Commented out for MVP
 
 import { StyledAppBar, DonateButton, NavLink } from './styled';
 

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 function getOrientation() {
-  return window.innerHeight > window.innerWidth;
+  if (globalThis.window === undefined) return false;
+  return globalThis.window.innerHeight > globalThis.window.innerWidth;
 }
 
 function useOrientation() {
@@ -12,9 +13,11 @@ function useOrientation() {
       setIsPortrait(getOrientation());
     }
 
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
+    if (globalThis.window !== undefined) {
+      globalThis.window.addEventListener("resize", handleResize);
+      return () =>
+        globalThis.window.removeEventListener("resize", handleResize);
+    }
   }, []);
 
   return isPortrait;

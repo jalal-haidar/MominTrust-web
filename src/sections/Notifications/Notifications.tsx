@@ -1,17 +1,17 @@
-import { CustomContentProps, SnackbarProvider } from 'notistack';
+import { CustomContentProps, SnackbarProvider } from "notistack";
+import { ReactNode, Ref, forwardRef } from "react";
 
-import { notifications } from '@/config';
+import { notifications } from "@/config";
 
-import Notifier from './Notifier';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import { Ref, forwardRef } from 'react';
+import Notifier from "./Notifier";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 
 // here how you can define your own notification component
 
 const CustomNotification = forwardRef(function CustomNotification(
   { message }: CustomContentProps,
-  ref: Ref<HTMLDivElement>,
+  ref: Ref<HTMLDivElement>
 ) {
   return (
     <Alert ref={ref} severity="info">
@@ -21,7 +21,11 @@ const CustomNotification = forwardRef(function CustomNotification(
   );
 });
 
-function Notifications() {
+type NotificationsProps = {
+  children: ReactNode;
+};
+
+function Notifications({ children }: NotificationsProps) {
   return (
     <SnackbarProvider
       maxSnack={notifications.maxSnack}
@@ -30,6 +34,7 @@ function Notifications() {
       }}
     >
       <Notifier />
+      {children}
     </SnackbarProvider>
   );
 }

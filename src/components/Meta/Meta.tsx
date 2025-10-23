@@ -1,8 +1,8 @@
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
-import { title as appTitle, defaultMetaTags } from '@/config';
+import { title as appTitle, defaultMetaTags } from "@/config";
 
-import type { MetaProps } from './types';
+import type { MetaProps } from "./types";
 
 function Meta({
   description = defaultMetaTags.description,
@@ -10,42 +10,42 @@ function Meta({
   title,
   image = defaultMetaTags.image,
 }: MetaProps) {
-  const pageTitle = `${appTitle}${title ? ' | ' + title : ''}`;
+  const pageTitle = `${appTitle}${title ? " | " + title : ""}`;
 
   return (
     <Helmet
       title={pageTitle}
       meta={[
         {
-          name: 'description',
+          name: "description",
           content: description,
         },
         {
-          property: 'og:title',
+          property: "og:title",
           content: pageTitle,
         },
         {
-          property: 'og:description',
+          property: "og:description",
           content: description,
         },
         {
-          property: 'og:type',
-          content: 'website',
+          property: "og:type",
+          content: "website",
         },
         {
-          property: 'og:image',
+          property: "og:image",
           content: image,
         },
         {
-          name: 'twitter:card',
-          content: 'summary',
+          name: "twitter:card",
+          content: "summary",
         },
         {
-          name: 'twitter:title',
+          name: "twitter:title",
           content: pageTitle,
         },
         {
-          name: 'twitter:description',
+          name: "twitter:description",
           content: description,
         },
       ].concat(meta)}

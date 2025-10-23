@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
-import { SnackbarKey, useSnackbar } from 'notistack';
+import { SnackbarKey, useSnackbar } from "notistack";
 
-import useNotifications from '@/store/notifications';
+import useNotifications from "@/store/notifications";
 
 // NOTE: this is a workaround for a missing feature in notistack
 // This will be removed once the new version of notistack is released
@@ -44,7 +44,9 @@ function Notifier() {
       }
 
       // keep track of snackbars that we've displayed
-      options.key && storeDisplayed(options.key);
+      if (options.key) {
+        storeDisplayed(options.key);
+      }
     });
   });
 

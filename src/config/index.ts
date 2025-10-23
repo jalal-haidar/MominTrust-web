@@ -1,39 +1,39 @@
-import isMobile from '@/utils/is-mobile';
+import isMobile from "@/utils/is-mobile";
 
-import type { Notifications } from './types';
+import type { Notifications } from "./types";
 
-const title = 'MOMIN Trust';
+const title = "MominTrust";
 
-const email = 'auther-email@gmail.com';
+const email = "jalal99.dev@gmail.com";
 
-const repository = 'https://github.com/suren-atoyan/react-pwa';
+const repository = "https://github.com/jalal-haidar/MominTrust-web";
 
 const messages = {
   app: {
     crash: {
-      title: 'Oooops... Sorry, I guess, something went wrong. You can:',
+      title: "Oooops... Sorry, I guess, something went wrong. You can:",
       options: {
         email: `contact with author by this email - ${email}`,
-        reset: 'Press here to reset the application',
+        reset: "Press here to reset the application",
       },
     },
   },
   loader: {
-    fail: 'Hmmmmm, there is something wrong with this component loading process... Maybe trying later would be the best idea',
+    fail: "Hmmmmm, there is something wrong with this component loading process... Maybe trying later would be the best idea",
   },
   images: {
-    failed: 'something went wrong during image loading :(',
+    failed: "something went wrong during image loading :(",
   },
-  404: 'Hey bro? What are you looking for?',
+  404: "Hey bro? What are you looking for?",
 };
 
-const dateFormat = 'MMMM DD, YYYY';
+const dateFormat = "MMMM DD, YYYY";
 
 const notifications: Notifications = {
   options: {
     anchorOrigin: {
-      vertical: 'bottom',
-      horizontal: 'left',
+      vertical: "bottom",
+      horizontal: "left",
     },
     autoHideDuration: 6000,
   },
@@ -47,10 +47,11 @@ const loader = {
 };
 
 const defaultMetaTags = {
-  image: '/cover.png',
-  description: 'Starter kit for modern web applications',
+  image: "/cover.png",
+  description:
+    "Progressive Web Application for Momin Trust - Supporting talented underprivileged children",
 };
-const giphy404 = 'https://giphy.com/embed/xTiN0L7EW5trfOvEk0';
+const giphy404 = "https://giphy.com/embed/xTiN0L7EW5trfOvEk0";
 
 export {
   loader,

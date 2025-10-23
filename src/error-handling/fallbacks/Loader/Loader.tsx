@@ -1,7 +1,7 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
-import { messages } from '@/config';
+import { messages } from "@/config";
 
 function LoaderErrorBoundaryFallback() {
   return (

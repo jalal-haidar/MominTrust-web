@@ -1,22 +1,22 @@
-import Box from '@mui/material/Box';
-import Container, { ContainerProps } from '@mui/material/Container';
-import Typography, { TypographyProps } from '@mui/material/Typography';
-import Paper, { PaperProps } from '@mui/material/Paper';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Container, { ContainerProps } from "@mui/material/Container";
+import Typography, { TypographyProps } from "@mui/material/Typography";
+import Paper, { PaperProps } from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
 
 // Flex containers
 const FlexBox = styled(Box)({
-  display: 'flex',
+  display: "flex",
 });
 
 const CenteredFlexBox = styled(FlexBox)({
-  justifyContent: 'center',
-  alignItems: 'center',
+  justifyContent: "center",
+  alignItems: "center",
 });
 
 const FullSizeCenteredFlexBox = styled(CenteredFlexBox)({
-  width: '100%',
-  height: '100%',
+  width: "100%",
+  height: "100%",
 });
 
 // Page layout components
@@ -33,22 +33,22 @@ const PageSection = styled(Box)(({ theme }) => ({
 const ContentCard = styled(Paper)<PaperProps>(({ theme }) => ({
   padding: theme.spacing(3),
   borderRadius: 12,
-  transition: 'transform 0.2s, box-shadow 0.2s',
-  '&:hover': {
-    transform: 'translateY(-4px)',
+  transition: "transform 0.2s, box-shadow 0.2s",
+  "&:hover": {
+    transform: "translateY(-4px)",
     boxShadow: theme.shadows[4],
   },
 }));
 
 // Typography components
 const PageTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
-  fontSize: '2rem',
+  fontSize: "2rem",
   fontWeight: 700,
   marginBottom: theme.spacing(2),
-  position: 'relative',
-  '&:after': {
+  position: "relative",
+  "&:after": {
     content: '""',
-    position: 'absolute',
+    position: "absolute",
     bottom: -8,
     left: 0,
     width: 60,
@@ -59,7 +59,7 @@ const PageTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
 }));
 
 const SectionTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
-  fontSize: '1.5rem',
+  fontSize: "1.5rem",
   fontWeight: 600,
   marginBottom: theme.spacing(2),
 }));

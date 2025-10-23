@@ -1,12 +1,12 @@
-import React from 'react';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import { useTheme } from '@mui/material/styles';
+import React from "react";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import { useTheme } from "@mui/material/styles";
 
-import { PageSection } from '@/components/styled';
+import { PageSection } from "@/components/styled";
 
 // Define the types for value cards
 export type ValueCardType = {
@@ -41,21 +41,27 @@ const ValueCards: React.FC<ValueCardsProps> = ({ values }) => {
           }
 
           return (
-            <Grid item xs={12} md={4} key={value.id}>
+            <Grid size={{ xs: 12, md: 4 }} key={value.id}>
               <Card
                 elevation={1}
                 sx={{
-                  height: '100%',
+                  height: "100%",
                   borderLeft: `4px solid ${borderColor}`,
-                  transition: 'transform 0.3s ease-in-out',
-                  '&:hover': {
-                    transform: 'translateY(-5px)',
+                  transition: "transform 0.3s ease-in-out",
+                  "&:hover": {
+                    transform: "translateY(-5px)",
                     boxShadow: 3,
                   },
                 }}
               >
-                <CardContent sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                <CardContent
+                  sx={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                     {value.icon}
                     <Typography variant="h6">{value.title}</Typography>
                   </Box>

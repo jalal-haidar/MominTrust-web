@@ -1,3 +1,1 @@
-import AppErrorBoundaryFallback from './App';
-
-export default AppErrorBoundaryFallback;
+export { default } from "./App";

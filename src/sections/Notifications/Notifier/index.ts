@@ -1,3 +1,1 @@
-import Notifier from './Notifier';
-
-export default Notifier;
+export { default } from "./Notifier";

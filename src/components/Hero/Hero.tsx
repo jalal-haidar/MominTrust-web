@@ -10,7 +10,7 @@ const Hero = () => {
   // Stats to display in hero section
   const stats = [
     {
-      value: '250+',
+      value: '5+',
       label: 'Students Supported',
       icon: SchoolIcon,
       color: theme.palette.primary.main,
@@ -21,7 +21,7 @@ const Hero = () => {
       icon: TrendingUpIcon,
       color: theme.palette.secondary.main,
     },
-    { value: '5', label: 'Years of Impact', icon: PeopleIcon, color: theme.palette.primary.light },
+    { value: '1', label: 'Years of Impact', icon: PeopleIcon, color: theme.palette.primary.light },
   ];
 
   return (

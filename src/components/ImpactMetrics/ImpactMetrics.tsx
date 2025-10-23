@@ -1,42 +1,35 @@
-import {
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  Box,
-  useTheme,
-} from "@mui/material";
-import { School, People, AttachMoney, TrendingUp } from "@mui/icons-material";
+import { Grid, Card, CardContent, Typography, Box, useTheme } from '@mui/material';
+import { School, People, AttachMoney, TrendingUp } from '@mui/icons-material';
 
 const metrics = [
   {
-    id: "m1",
-    label: "Children Supported",
-    value: "1,247",
+    id: 'm1',
+    label: 'Children Supported',
+    value: '7',
     icon: <People fontSize="large" />,
   },
   {
-    id: "m2",
-    label: "Schools Reached",
-    value: "85",
+    id: 'm2',
+    label: 'Schools Reached',
+    value: '1',
     icon: <School fontSize="large" />,
   },
   {
-    id: "m3",
-    label: "Funds Raised",
-    value: "$2.3M",
+    id: 'm3',
+    label: 'Funds Raised',
+    value: '100k',
     icon: <AttachMoney fontSize="large" />,
   },
   {
-    id: "m4",
-    label: "Success Rate",
-    value: "94%",
+    id: 'm4',
+    label: 'Success Rate',
+    value: '94%',
     icon: <TrendingUp fontSize="large" />,
   },
 ];
 
 // Add useEffect to simulate counter animation
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 const MetricCard = ({
   title,
@@ -48,12 +41,12 @@ const MetricCard = ({
   icon: React.ReactNode;
 }) => {
   const theme = useTheme();
-  const [animatedValue, setAnimatedValue] = useState("0");
+  const [animatedValue, setAnimatedValue] = useState('0');
 
   // Extract numeric part and suffix for animation
   useEffect(() => {
     // Skip animation if it's not a numeric value
-    if (typeof value !== "string") {
+    if (typeof value !== 'string') {
       setAnimatedValue(value.toString());
       return;
     }
@@ -66,9 +59,9 @@ const MetricCard = ({
       return;
     }
 
-    const prefix = numericMatch[1] || "";
-    const numericPart = numericMatch[2].replace(/,/g, "");
-    const suffix = numericMatch[3] || "";
+    const prefix = numericMatch[1] || '';
+    const numericPart = numericMatch[2].replace(/,/g, '');
+    const suffix = numericMatch[3] || '';
 
     const targetNumber = parseInt(numericPart, 10);
     const duration = 2000; // 2 seconds animation
@@ -79,15 +72,10 @@ const MetricCard = ({
     // Animate from 0 to target value
     const timer = setInterval(() => {
       currentStep += 1;
-      const current = Math.min(
-        Math.round(increment * currentStep),
-        targetNumber
-      );
+      const current = Math.min(Math.round(increment * currentStep), targetNumber);
 
       // Format the number with commas
-      const formattedNumber = current
-        .toString()
-        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      const formattedNumber = current.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       setAnimatedValue(`${prefix}${formattedNumber}${suffix}`);
 
       if (currentStep >= steps) {
@@ -103,29 +91,29 @@ const MetricCard = ({
     <Card
       sx={{
         minHeight: 140,
-        display: "flex",
-        alignItems: "center",
+        display: 'flex',
+        alignItems: 'center',
         background: `linear-gradient(145deg, ${theme.palette.background.paper} 0%, ${theme.palette.background.default} 100%)`,
-        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
-        transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
-        "&:hover": {
-          transform: "translateY(-5px)",
-          boxShadow: "0 12px 40px rgba(0, 0, 0, 0.15)",
+        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)',
+        transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+        '&:hover': {
+          transform: 'translateY(-5px)',
+          boxShadow: '0 12px 40px rgba(0, 0, 0, 0.15)',
         },
-        overflow: "hidden",
+        overflow: 'hidden',
         borderRadius: 2,
       }}
     >
-      <CardContent sx={{ width: "100%", position: "relative" }}>
+      <CardContent sx={{ width: '100%', position: 'relative' }}>
         {/* Background accent */}
         <Box
           sx={{
-            position: "absolute",
+            position: 'absolute',
             top: -20,
             right: -20,
             width: 120,
             height: 120,
-            borderRadius: "50%",
+            borderRadius: '50%',
             backgroundColor: `${theme.palette.primary.main}15`, // 15% opacity
             zIndex: 0,
           }}
@@ -133,10 +121,10 @@ const MetricCard = ({
 
         <Box
           sx={{
-            display: "flex",
-            alignItems: "center",
+            display: 'flex',
+            alignItems: 'center',
             gap: 2,
-            position: "relative",
+            position: 'relative',
             zIndex: 1,
           }}
         >
@@ -144,9 +132,9 @@ const MetricCard = ({
             sx={{
               width: 70,
               height: 70,
-              borderRadius: "20%",
-              display: "grid",
-              placeItems: "center",
+              borderRadius: '20%',
+              display: 'grid',
+              placeItems: 'center',
               background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
               color: theme.palette.primary.contrastText,
               boxShadow: `0 4px 20px ${theme.palette.primary.main}40`, // 40% opacity
@@ -161,8 +149,8 @@ const MetricCard = ({
               sx={{
                 fontWeight: 700,
                 background: `linear-gradient(45deg, ${theme.palette.primary.dark} 30%, ${theme.palette.secondary.main} 90%)`,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
               }}
             >
               {animatedValue}
@@ -205,19 +193,19 @@ const ImpactMetrics = () => {
         px: { xs: 2, md: 4 },
         background: `linear-gradient(180deg, ${theme.palette.background.default}00 0%, ${theme.palette.background.default}30 100%)`,
         borderRadius: 4,
-        position: "relative",
-        overflow: "hidden",
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
       {/* Background design elements */}
       <Box
         sx={{
-          position: "absolute",
+          position: 'absolute',
           top: -100,
           right: -100,
           width: 300,
           height: 300,
-          borderRadius: "50%",
+          borderRadius: '50%',
           background: `radial-gradient(circle, ${theme.palette.primary.main}20 0%, ${theme.palette.primary.main}00 70%)`,
           zIndex: 0,
         }}
@@ -225,12 +213,12 @@ const ImpactMetrics = () => {
 
       <Box
         sx={{
-          position: "absolute",
+          position: 'absolute',
           bottom: -50,
           left: -50,
           width: 200,
           height: 200,
-          borderRadius: "50%",
+          borderRadius: '50%',
           background: `radial-gradient(circle, ${theme.palette.secondary.main}20 0%, ${theme.palette.secondary.main}00 70%)`,
           zIndex: 0,
         }}
@@ -239,12 +227,12 @@ const ImpactMetrics = () => {
       {/* Header */}
       <Box
         sx={{
-          position: "relative",
+          position: 'relative',
           zIndex: 1,
           mb: 8,
-          textAlign: "center",
+          textAlign: 'center',
           maxWidth: 900,
-          mx: "auto",
+          mx: 'auto',
         }}
       >
         <Typography
@@ -255,13 +243,13 @@ const ImpactMetrics = () => {
           sx={{
             fontWeight: 800,
             background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
             mb: 2,
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            textShadow: "0px 2px 5px rgba(0,0,0,0.1)",
+            textTransform: 'uppercase',
+            letterSpacing: '1px',
+            textShadow: '0px 2px 5px rgba(0,0,0,0.1)',
           }}
         >
           Our Impact
@@ -269,20 +257,20 @@ const ImpactMetrics = () => {
         <Typography
           variant="h6"
           color="text.secondary"
-          sx={{ fontWeight: 400, maxWidth: "800px", mx: "auto" }}
+          sx={{ fontWeight: 400, maxWidth: '800px', mx: 'auto' }}
         >
-          Transforming lives through education and mentorship, while maintaining
-          the highest standards of privacy and dignity.
+          Transforming lives through education and mentorship, while maintaining the highest
+          standards of privacy and dignity.
         </Typography>
       </Box>
 
       {/* Metrics Cards with Animation */}
       <Box
         sx={{
-          transform: isVisible ? "translateY(0)" : "translateY(20px)",
+          transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
           opacity: isVisible ? 1 : 0,
-          transition: "transform 0.7s ease-out, opacity 0.7s ease-out",
-          position: "relative",
+          transition: 'transform 0.7s ease-out, opacity 0.7s ease-out',
+          position: 'relative',
           zIndex: 2,
         }}
       >
@@ -292,7 +280,7 @@ const ImpactMetrics = () => {
               key={m.id}
               size={{ xs: 12, sm: 6, md: 3 }}
               sx={{
-                transform: isVisible ? "translateY(0)" : "translateY(20px)",
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
                 opacity: isVisible ? 1 : 0,
                 transition: `transform 0.7s ease-out ${
                   index * 0.1

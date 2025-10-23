@@ -5,9 +5,9 @@ import Document, {
   NextScript,
   DocumentContext,
   DocumentInitialProps,
-} from "next/document";
-import createEmotionServer from "@emotion/server/create-instance";
-import createEmotionCache from "@/utils/createEmotionCache";
+} from 'next/document';
+import createEmotionServer from '@emotion/server/create-instance';
+import createEmotionCache from '@/utils/createEmotionCache';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<
@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
     const emotionStyles = extractCriticalToChunks(initialProps.html);
     const emotionStyleTags = emotionStyles.styles.map((style) => (
       <style
-        data-emotion={`${style.key} ${style.ids.join(" ")}`}
+        data-emotion={`${style.key} ${style.ids.join(' ')}`}
         key={style.key}
         dangerouslySetInnerHTML={{ __html: style.css }}
       />
@@ -48,6 +48,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#006D77" />
           <link rel="manifest" href="/manifest.json" />
           <link rel="icon" href="/favicon.ico" />
